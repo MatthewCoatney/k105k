@@ -1,9 +1,14 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-import { generateClient, type Client } from "aws-amplify/api";
+
 import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
+import { Observable as ZenObservable } from "zen-observable-ts";
+import { onUpdateLeftMenu } from "../../graphql/subscriptions";
+import * as subscriptions from "../../graphql/subscriptions";
+import { GraphQLSubscription, GraphQLQuery } from "@aws-amplify/api";
+import { generateClient, type Client } from "aws-amplify/api";
 
 import {
   Menu,
@@ -14,6 +19,7 @@ import {
   modelDefaultLeft,
   modelDefaultRight,
 } from "../login/models/menu";
+//import { OnUpdateLeftMenuSubscription } from "../API.service";
 
 @Injectable({
   providedIn: "root",
@@ -39,6 +45,20 @@ export class MenuService {
   async initialize(): Promise<void> {
     await this.onList();
   }
+
+  // async subscribe() {
+  //   // Subscribe to update of Todo
+  //   const updateSub = (await this.client.graphql({
+  //     query: onUpdateLeftMenu,
+  //   })) as GraphQLSubscription<any>;
+
+  //   updateSub.subscribe({
+  //     next: ({ data }) => console.log(data),
+  //     error: (error) => console.warn(error),
+  //   });
+
+  //   //this.leftModel.next(newLeftMenu["data"].listLeftMenus.items[0]);
+  // }
 
   public async onUpdate(model: any, query: any) {
     // destructure obj to remove timestamps
@@ -78,7 +98,7 @@ export class MenuService {
         query: queries.listLeftMenus,
       });
       this.leftModel.next(response["data"].listLeftMenus.items[0]);
-      
+
       response = await this.client.graphql({
         query: queries.listCenterMenus,
       });
@@ -92,4 +112,9 @@ export class MenuService {
       console.log("error fetching left menu", e);
     }
   }
+}
+function graphqlOperation(
+  onCreateRestaurant: any
+): import("@aws-amplify/api-graphql").GraphQLOptionsV6<unknown, string> {
+  throw new Error("Function not implemented.");
 }

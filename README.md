@@ -1,9 +1,19 @@
-# Ionic 6 Full App PRO Version
-The most advanced and complete Mobile & PWA starter app template
+# Ionic Angular Amplify
+
 
 # Documentation
-You can find the documentation in https://ionic-5-full-starter-app-docs.ionicthemes.com
 
+## Redirect
+Amplify can't interpret Angular paths. A rewrite
+should be set up to allow direct access to pages
+
+From the Amplify console, you can access the Rewrites and redirects menu item in left sidebar. From there you can update the redirect rule to these settings:
+
+```zsh
+Source address: </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$)([^.]+$)/>
+Target address: /index.html
+Type: 200
+```
 ## Install dependencies
 Run `npm install` to install the project dependencies.
 
