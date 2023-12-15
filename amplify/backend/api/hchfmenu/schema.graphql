@@ -1,0 +1,100 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
+type LeftMenu @model {
+  id: ID!
+  hites: Float!
+  hitesSm: Float!
+  creek: Float!
+  creekSm: Float!
+  pilot: Float!
+  pilotSm: Float!
+  chinese: Float!
+  chineseSm: Float!
+  southwest: Float!
+  southwestSm: Float!
+  green: Float!
+  greenSm: Float!
+  tuna: Float!
+  tunaSm: Float!
+  waldorf: Float!
+  waldorfSm: Float!
+  caesar: Float!
+  caesarSm: Float!
+  cup: Float!
+  bowl: Float!
+  foccacia: Float!
+  pbj: Float!
+  grilledChz: Float!
+  hamChz: Float!
+  coffee: Float!
+  tea: Float!
+  chai: Float!
+  soupSalad: Float!
+}
+
+type CenterMenu @model {
+  id: ID!
+  ponderosa: Float!
+  midpines: Float!
+  midpinesSm: Float!
+  captain: Float!
+  captainSm: Float!
+  bootjack: Float!
+  bootjackSm: Float!
+  fishcamp: Float!
+  fishcampSm: Float!
+  catheys: Float!
+  laurel: Float!
+  usona: Float!
+  grizzly: Float!
+  grizzlySm: Float!
+  riven: Float!
+  rivenSm: Float!
+  hornitos: Float!
+  totokon: Float!
+  portal: Float!
+  meadows: Float!
+  meadowsSm: Float!
+  market: Float!
+  mariposan: Float!
+  blt: Float!
+  bltSm: Float!
+  sourcream: Float!
+  hummus: Float!
+  avocado: Float!
+  pickles: Float!
+  bacon: Float!
+  fakin: Float!
+  extraveg: Float!
+  ciabatta: Float!
+  croissant: Float!
+  sliceChz: Float!
+}
+
+type RightMenu @model {
+  id: ID!
+  mono: Float!
+  bagby: Float!
+  french: Float!
+  quiche: Float!
+  burritoMeat: Float!
+  burritoVeggie: Float!
+  bagel: Float!
+  creamChz: Float!
+  muffin: Float!
+  crumblePie: Float!
+  chocCake: Float!
+  carrotCake: Float!
+  brownies: Float!
+  cookies: Float!
+  beetIt: Float!
+  carrotKale: Float!
+  carrot: Float!
+  citrus: Float!
+  pureGreens: Float!
+  smoothie: Float!
+  boost: Float!
+}

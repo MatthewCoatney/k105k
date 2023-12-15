@@ -1,0 +1,105 @@
+@import "/src/theme/mixins/scrollbars";
+
+:host {
+  --gradient-color-1: #ffd200;
+  --gradient-color-2: #f7971e;
+  --page-background: var(--app-background-shade);
+  --segment-indicator-color: #4286f4;
+  --page-margin: var(--app-broad-margin);
+}
+
+// gradient background for the header
+ion-header {
+  background: -webkit-linear-gradient(
+    to right,
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  ion-toolbar {
+    --background: transparent;
+  }
+}
+
+// page content background
+ion-content {
+  --background: var(--page-background);
+}
+
+// gradient background for the segment. It's the same as the one in the header
+.segment-wrapper {
+  background: -webkit-linear-gradient(
+    to right,
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.page-content {
+  background: var(--page-background);
+  padding-top: 70px;
+}
+
+.category-title {
+  font-size: 1rem;
+  margin-top: 6px;
+  display: block;
+  font-weight: bold;
+}
+
+.category-image {
+  width: 52px;
+}
+
+ion-segment.categories-segment {
+  margin-bottom: -70px; // place categories inside the "header" section
+  background: transparent;
+
+  // remove slider scroll bar
+  @include hide-scrollbars();
+
+  // margin start for first category
+  &:first-child {
+    margin-left: calc(var(--page-margin) / 2);
+  }
+
+  // margin end for last category
+  &:last-child {
+    margin-right: calc(var(--page-margin) / 2);
+  }
+
+  ion-segment-button {
+    --background: #fff;
+    --background-checked: var(--ion-color-dark-tint);
+    --color: #000;
+    --color-checked: #fff;
+    --indicator-color: var(--segment-indicator-color);
+    --indicator-height: 6px;
+
+    min-width: 110px;
+    min-height: 110px;
+    margin: calc(var(--page-margin) / 2);
+    margin-top: calc(var(--page-margin) * 2);
+    margin-bottom: var(--page-margin);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Access the shadow part of the segment indicator to style the line displayed below the selected category
+ion-segment-button::part(indicator-background) {
+  width: 80%;
+  margin: 0px auto;
+  margin-top: 122px;
+  border-radius: 8px;
+  margin-bottom: -15px; // needed for android
+}

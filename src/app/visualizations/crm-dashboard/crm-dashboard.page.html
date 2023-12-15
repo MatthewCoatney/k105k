@@ -1,0 +1,124 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/categories"></ion-back-button>
+    </ion-buttons>
+    <ion-title>CRM Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="mini-stats-row">
+    <ion-col class="mini-stat-col" size="6">
+      <div class="highlighted-stat dark-highlight number-stat-outer">
+        <h4 class="stat-title">Revenue</h4>
+        <div class="number-stat-wrapper">
+          <span class="stat-value" ngx-charts-count-up [countTo]="1320" [countPrefix]="'$'">1320</span>
+          <span class="stat-reference">+23%</span>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col class="mini-stat-col" size="6">
+      <div class="highlighted-stat doughnut-chart-stat-outer">
+        <h4 class="stat-title">Revenue Goal</h4>
+        <div class="custom-doughnut-chart-wrapper">
+          <app-custom-doughnut-chart
+            [chartData]="revenueChartData"
+            [colorScheme]="doughnutColorScheme">
+          </app-custom-doughnut-chart>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col class="mini-stat-col" size="6">
+      <div class="highlighted-stat doughnut-chart-stat-outer">
+        <h4 class="stat-title">Campaign Progress</h4>
+        <div class="custom-doughnut-chart-wrapper">
+          <app-custom-doughnut-chart
+            [chartData]="campaignProgressChartData"
+            [colorScheme]="doughnutColorScheme">
+          </app-custom-doughnut-chart>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col class="mini-stat-col" size="6">
+      <div class="highlighted-stat progress-bar-stat-outer">
+        <h4 class="stat-title">Leads</h4>
+        <div class="progress-bar-stat-wrapper">
+          <div class="progress-bar-stat">
+            <div class="progress-bar-container">
+              <ion-progress-bar appCustomProgressBar [progress]="79" [max]="254"></ion-progress-bar>
+            </div>
+            <span class="stat-value" ngx-charts-count-up [countTo]="79">79</span>
+            <span class="stat-reference">new</span>
+          </div>
+          <div class="progress-bar-stat">
+            <div class="progress-bar-container">
+              <ion-progress-bar appCustomProgressBar [progress]="18" [max]="100"></ion-progress-bar>
+            </div>
+            <span class="stat-value" ngx-charts-count-up [countTo]="18" [countSuffix]="'%'">18%</span>
+            <span class="stat-reference">Subscribed</span>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <div class="custom-chart-outer">
+    <div class="custom-chart-header">
+      <h3 class="custom-chart-title">Campaign Performance</h3>
+      <ion-button class="chart-data-btn" [routerLink]="['/visualizations/crm-data-table']">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="custom-chart-summary">
+      <div class="custom-chart-highlight-item">
+        <div class="highlight-data">
+          <span class="highlight-value">32.3</span>
+          <span class="highlight-reference">%</span>
+        </div>
+        <span class="highlight-label">Open rate</span>
+      </div>
+      <div class="custom-chart-highlight-item">
+        <div class="highlight-data">
+          <span class="highlight-value">5.7</span>
+          <span class="highlight-reference">%</span>
+        </div>
+        <span class="highlight-label alt-label">Click rate</span>
+      </div>
+      <div class="custom-chart-filters">
+        <form [formGroup]="customChartFiltersForm">
+          <ion-radio-group formControlName="selected_option">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Day</ion-label>
+                <ion-radio value="day"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Week</span>
+                </ion-label>
+                <ion-radio value="week"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+        </form>
+      </div>
+    </div>
+    <div class="custom-chart-wrapper">
+      <app-custom-line-chart
+        [scheme]="lineChartColorScheme"
+        [results]="campaignPerformanceData"
+        [legendPosition]="lineChartOptions?.legendPosition"
+        [xAxis]="lineChartOptions?.showXAxis"
+        [yAxis]="lineChartOptions?.showYAxis"
+        [legend]="lineChartOptions?.showLegend"
+        [showXAxisLabel]="lineChartOptions?.showXAxisLabel"
+        [showYAxisLabel]="lineChartOptions?.showYAxisLabel"
+        [roundDomains]="lineChartOptions?.roundDomains"
+        [autoScale]="lineChartOptions?.autoScale"
+        [curve]="lineChartOptions?.curve"
+        [showGridLines]="lineChartOptions?.showGridLines">
+      </app-custom-line-chart>
+    </div>
+  </div>
+</ion-content>

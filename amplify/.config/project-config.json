@@ -1,0 +1,17 @@
+{
+  "projectName": "hchfmenu",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "angular",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist/app/browser",
+      "BuildCommand": "ionic build --prod",
+      "StartCommand": "ionic serve"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

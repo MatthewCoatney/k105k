@@ -1,0 +1,45 @@
+<ngx-charts-chart
+  [view]="[width, height]"
+  [showLegend]="false"
+  [animations]="animations">
+  <svg:g [attr.transform]="translation" class="pie-chart chart">
+    <svg:g class="pie-grid-arcs">
+      <!-- ? Complete circle -->
+      <svg:g class="" style="opacity: 0.4;"
+        ngx-charts-pie-arc
+        [startAngle]="0"
+        [endAngle]=""
+        [innerRadius]="innerRadius"
+        [outerRadius]="outerRadius"
+        [fill]="colorScheme.background"
+        [gradient]="false"
+        [animate]="false"
+        [pointerEvents]="false">
+      </svg:g>
+      <svg:g
+        ngx-charts-pie-arc
+        [startAngle]="0"
+        [endAngle]="endAngle"
+        [innerRadius]="innerRadius"
+        [outerRadius]="outerRadius"
+        [cornerRadius]="20"
+        [fill]="colorScheme.active"
+        [value]="chartData.value"
+        [gradient]="false"
+        [data]="chartData"
+        (select)="onClick($event)">
+      </svg:g>
+    </svg:g>
+    <svg:text
+      *ngIf="animations"
+      class="label percent-label"
+      style="font-size: 6vw; font-weight: 600;"
+      x="0"
+      y="10"
+      ngx-charts-count-up
+      [countTo]="chartData.percent"
+      [countSuffix]="'%'"
+      text-anchor="middle"
+    ></svg:text>
+  </svg:g>
+</ngx-charts-chart>

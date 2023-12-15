@@ -1,0 +1,191 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Interactive Activity</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="filterActivitiesForm" (ngSubmit)="onSubmit(filterActivitiesForm.value)">
+    <div class="activities-filter">
+      <div class="filter-heading">
+        <h3 class="filter-title">Filter activities</h3>
+        <p class="filter-description">
+          Showing:
+          <u><i>{{ (activityCategories.length === selectedActivityTypes.length) ? 'All categories' : ((selectedActivityTypes.length > 1) ? selectedActivityTypes.length.toString().concat(' categories') : selectedActivityTypes.length.toString().concat(' category')) }}</i></u>
+        </p>
+      </div>
+      <div class="filter-action">
+        <ion-button class="filter-btn" (click)="presentActivitiesFilterModal()">
+          <ion-icon slot="start" name="filter-outline"></ion-icon>
+          Categories
+        </ion-button>
+      </div>
+    </div>
+  </form>
+
+  <ion-list>
+    <ng-container *ngFor="let notificationsGroup of displayedNotificationsByDate;">
+      <ion-item-divider class="section-divider" sticky>
+        <ion-label>{{ notificationsGroup?.label }}</ion-label>
+        <ion-button class="section-call-to-action" fill="clear" (click)="clearActivities(notificationsGroup.value)" *ngIf="notificationsGroup?.entries?.length > 0">Clear</ion-button>
+      </ion-item-divider>
+
+      <div class="empty-activities" *ngIf="notificationsGroup?.entries?.length === 0">
+        <span class="no-activities-message">No activities found</span>
+      </div>
+      <ng-container *ngFor="let notificationItem of notificationsGroup?.entries;">
+        <!-- ? Conditional template Outlet (see: https://stackoverflow.com/a/52448001/1116959) -->
+        <ng-container *ngTemplateOutlet="(notificationItem.type === ActivityType.MISSED_CALL) ? missedCallNotification : ((notificationItem.type === ActivityType.EVENT) ? eventNotification : ((notificationItem.type === ActivityType.SOCIAL_INTERACTION) ? socialInteractionNotification : ((notificationItem.type === ActivityType.CHANNEL_INVITE) ? channelInviteNotification : ((notificationItem.type === ActivityType.SHARED_FILE) ? fileSharingNotification : null)))); context: { notification: notificationItem }">
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- ? 'Missed call' notification template -->
+    <ng-template #missedCallNotification let-notification="notification">
+      <ion-row class="notification-item-wrapper missed-call-notification">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="notification-image" [src]="notification?.picture" [alt]="notification?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col size="6" class="notification-details">
+          <div class="notification-details-content">
+            {{ notification?.title }} <b>{{ notification?.caller }}</b>
+          </div>
+        </ion-col>
+        <ion-col class="missed-call-action">
+          <ion-button class="missed-call-btn" shape="round">
+            <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? 'Social interactions' notification template -->
+    <ng-template #socialInteractionNotification let-notification="notification">
+      <ion-row class="notification-item-wrapper social-interaction-notification">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="notification-image" [src]="notification?.picture" [alt]="notification?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col size="6" class="notification-details">
+          <div class="notification-details-content">
+            <b>{{ notification?.follower }}</b> {{ notification?.title }}
+          </div>
+        </ion-col>
+        <ion-col class="social-interaction-action">
+          <ion-button class="social-interaction-btn" shape="round">
+            Follow
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? 'Channel Invites' notification template -->
+    <ng-template #channelInviteNotification let-notification="notification">
+      <ion-row class="notification-item-wrapper chanel-invite-notification">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="notification-image" [src]="notification?.picture" [alt]="notification?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col size="10" class="notification-details">
+          <div class="notification-details-content">
+            <b>{{ notification?.host }}</b> {{ notification?.title }}
+            <div class="channel-invite-action">
+              <span class="channel-invite-name">{{ notification?.channel }}</span>
+              <div class="channel-invite-buttons-wrapper">
+                <ion-button class="channel-invite-btn" fill="outline" color="dark" shape="round">
+                  Accept
+                </ion-button>
+                <ion-button class="channel-invite-btn" fill="outline" color="medium" shape="round">
+                  Reject
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? 'File Sharing' notification template -->
+    <ng-template #fileSharingNotification let-notification="notification">
+      <ion-row class="notification-item-wrapper file-sharing-notification">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="notification-image" [src]="notification?.picture" [alt]="notification?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col size="10" class="notification-details">
+          <div class="notification-details-content">
+            <b>{{ notification?.author }}</b> {{ notification?.title }}
+            <div class="file-sharing-action">
+              <span class="file-sharing-name">{{ notification?.file }}</span>
+              <div class="file-sharing-buttons-wrapper">
+                <ion-button class="file-sharing-btn" shape="round">
+                  <ion-icon slot="icon-only" name="download-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? 'Events' notification template -->
+    <ng-template #eventNotification let-notification="notification">
+      <ion-row class="notification-item-wrapper event-notification">
+        <ion-col size="4">
+          <div class="event-guests-list">
+            <div class="event-guests-image-container" *ngFor="let guest of notification?.guests?.slice(0, 4); let i = index">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="guest-image" animation="spinner" [src]="guest?.picture" [alt]="guest?.name?.concat(' profile picture')">
+                </app-image-shell>
+              </app-aspect-ratio>
+              <a class="has-more-guests" *ngIf="i === 3 && notification?.guests?.length > 4">
+                <span class="guests-count">{{ notification?.guests?.length - 4 }}</span>
+              </a>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="8" class="notification-details">
+          <div class="notification-details-content">
+            <h4 class="event-title">{{ notification?.title }}</h4>
+            <p class="event-description">{{ notification?.description }}</p>
+            <div class="event-date-wrapper">
+              <div class="date-item">
+                <ion-icon class="date-icon" name="calendar-outline"></ion-icon>
+                <div class="date-values">
+                  <span class="date-value">{{ notification?.date | date:'MMM d' }}</span>
+                  <span class="date-value-alt">{{ notification?.date | date:'y' }}</span>
+                </div>
+              </div>
+              <div class="date-item">
+                <ion-icon class="date-icon" name="time-outline"></ion-icon>
+                <div class="date-values">
+                  <span class="date-value">{{ notification?.date | date:'h:mm a' }}</span>
+                  <span class="date-value-alt">{{ notification?.date | date:'z' }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-buttons-wrapper">
+              <ion-button class="event-btn" fill="outline" color="success" shape="round">
+                Yes
+              </ion-button>
+              <ion-button class="event-btn" fill="outline" color="medium" shape="round">
+                Maybe
+              </ion-button>
+              <ion-button class="event-btn" fill="outline" color="dark" shape="round">
+                No
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </ion-list>
+</ion-content>

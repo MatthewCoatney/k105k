@@ -1,0 +1,30 @@
+:host {
+  --page-margin: var(--app-broad-margin);
+}
+.page-content {
+  --padding-top: var(--page-margin);
+  --padding-start: var(--page-margin);
+  --padding-end: var(--page-margin);
+
+  .post-body {
+    font-size: 16px;
+    color: var(--ion-color-primary-tint);
+    line-height: 1.5;
+  }
+
+  .post-category {
+    margin-inline-end: calc(var(--page-margin) / 4);
+  }
+
+  .post-comments {
+    margin-top: calc(var(--page-margin) / 1.5);
+  }
+}
+
+::ng-deep {
+  .post-body {
+    img {
+      height: 100%;
+    }
+  }
+}

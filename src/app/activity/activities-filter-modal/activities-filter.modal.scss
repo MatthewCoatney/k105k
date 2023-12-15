@@ -1,0 +1,67 @@
+@import "theme/mixins/inputs/checkbox-tag";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-fair-margin);
+
+  --page-tags-gutter: 5px;
+}
+
+.checkbox-tags {
+  padding: calc(var(--page-margin) / 2)
+    calc(var(--page-margin) - var(--page-tags-gutter));
+
+  @include checkbox-tag();
+
+  .checkbox-tag {
+    padding: 0px var(--page-tags-gutter);
+    margin: var(--page-tags-gutter) 0px;
+  }
+
+  // Add a deeper selector to override default colors
+  &.rounded-checkbox-tags {
+    background-color: var(--ion-color-lightest);
+
+    .checkbox-tag {
+      --border-width: 2px;
+      --border-color: #e0e0e0;
+      --min-height: 34px;
+
+      --checkbox-tag-color: #616161;
+      --checkbox-tag-background: transparent;
+      --checkbox-tag-active-color: #0d56b3;
+      --checkbox-tag-active-background: transparent;
+
+      &.item-checkbox-checked {
+        --border-color: #5096f1;
+      }
+    }
+  }
+}
+
+.filters-actions {
+  display: flex;
+  margin: var(--page-margin);
+  margin-top: 40px;
+
+  .select-all-btn {
+    --background: #efefef;
+    --color: #616161;
+
+    font-size: 14px;
+  }
+
+  .deselect-all-btn {
+    --background: #f6e3e5;
+    --color: #b32d57;
+
+    font-size: 14px;
+    margin-inline-start: 6px;
+  }
+
+  .apply-filters-btn {
+    font-size: 14px;
+    margin-inline-start: auto;
+  }
+}

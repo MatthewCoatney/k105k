@@ -1,0 +1,103 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateLeftMenu($filter: ModelSubscriptionLeftMenuFilterInput) {
+  onCreateLeftMenu(filter: $filter) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateLeftMenu($filter: ModelSubscriptionLeftMenuFilterInput) {
+  onUpdateLeftMenu(filter: $filter) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteLeftMenu($filter: ModelSubscriptionLeftMenuFilterInput) {
+  onDeleteLeftMenu(filter: $filter) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}

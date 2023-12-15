@@ -1,0 +1,112 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateLeftMenu(
+  $input: CreateLeftMenuInput!
+  $condition: ModelLeftMenuConditionInput
+) {
+  createLeftMenu(input: $input, condition: $condition) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateLeftMenu(
+  $input: UpdateLeftMenuInput!
+  $condition: ModelLeftMenuConditionInput
+) {
+  updateLeftMenu(input: $input, condition: $condition) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteLeftMenu(
+  $input: DeleteLeftMenuInput!
+  $condition: ModelLeftMenuConditionInput
+) {
+  deleteLeftMenu(input: $input, condition: $condition) {
+    id
+    hites
+    hitesSm
+    creek
+    creekSm
+    pilot
+    pilotSm
+    chinese
+    southwest
+    southwestSm
+    green
+    greenSm
+    tuna
+    tunaSm
+    waldorf
+    waldorfSm
+    caesar
+    caesarSm
+    cup
+    bowl
+    foccacia
+    pbj
+    grilledChz
+    hamChz
+    coffee
+    tea
+    chai
+    soupSalad
+    createdAt
+    updatedAt
+  }
+}

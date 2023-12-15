@@ -1,0 +1,326 @@
+:host {
+  --page-background: var(--app-background-shade);
+  --page-margin: var(--app-fair-margin);
+}
+
+ion-content {
+  --background: var(--page-background);
+}
+
+ion-list {
+  --ion-item-background: transparent;
+}
+
+.activities-filter {
+  display: flex;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+
+  .filter-heading {
+    .filter-title {
+      margin: 0px;
+      color: #2d354e;
+    }
+
+    .filter-description {
+      margin: 6px 0px 0px;
+      color: #374058;
+      font-size: 14px;
+    }
+  }
+
+  .filter-action {
+    margin-inline-start: auto;
+
+    .filter-btn {
+      margin-top: 0px;
+      margin-inline-start: 20px;
+      font-size: 14px;
+    }
+  }
+}
+
+.empty-activities {
+  padding: 20px 15px;
+  margin-bottom: 20px;
+
+  .no-activities-message {
+    display: block;
+    color: #808080;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.section-divider {
+  @at-root #{selector-unify(&, 'ion-item-divider')} {
+    --padding-start: 15px;
+    --inner-padding-end: 15px;
+    // ? Same as page background
+    --background: var(--page-background);
+    --color: #2d354e;
+  }
+
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.6px;
+  text-transform: capitalize;
+
+  &:not(:first-child) {
+    margin-top: 40px;
+  }
+
+  .section-call-to-action {
+    --color: #2d354e;
+
+    margin-inline-start: auto;
+    font-size: 16px;
+  }
+}
+
+.notification-item-wrapper {
+  --ion-grid-column-padding: 0px;
+
+  // ? 30px = 15px * 2
+  width: calc(100% - 30px);
+  padding: 0px;
+  margin: 20px 15px;
+
+  ion-button {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
+  app-image-shell.notification-image {
+    --image-shell-border-radius: 50%;
+
+    border: 2px solid #2d354e;
+    padding: 3px;
+  }
+
+  .notification-details {
+    padding-inline-start: 10px;
+    display: flex;
+
+    &:not(:last-child) {
+      padding-inline-end: 10px;
+    }
+
+    .notification-details-content {
+      padding-top: 5px;
+      padding-bottom: 15px;
+      height: calc(100% + 10px);
+      border-bottom: 2px solid #e4e5e7;
+      color: #374058;
+      width: 100%;
+
+      b {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.missed-call-notification {
+  .missed-call-action {
+    display: flex;
+
+    .missed-call-btn {
+      --background: #badfdc;
+      --background-hover: #a8d7d3;
+      --background-activated: #85c7c1;
+      --background-focused: #85c7c1;
+      --color: #1a1a1a;
+
+      margin-inline-start: auto;
+      // ? Same as .notification-details-content
+      margin-top: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+.social-interaction-notification {
+  .social-interaction-action {
+    display: flex;
+
+    .social-interaction-btn {
+      margin-inline-start: auto;
+      // ? Same as .notification-details-content
+      margin-top: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+.chanel-invite-notification {
+  .channel-invite-action {
+    width: 100%;
+    margin-top: 10px;
+
+    .channel-invite-name {
+      display: block;
+      text-align: end;
+      margin-bottom: 4px;
+      margin-inline-end: 4px;
+      font-size: 14px;
+    }
+
+    .channel-invite-buttons-wrapper {
+      display: flex;
+    }
+
+    .channel-invite-btn {
+      font-size: 12px;
+
+      &:first-child {
+        margin-inline-start: auto;
+      }
+    }
+  }
+}
+
+.file-sharing-notification {
+  .file-sharing-action {
+    width: 100%;
+    margin-top: 10px;
+
+    .file-sharing-name {
+      display: block;
+      text-align: end;
+      margin-bottom: 4px;
+      margin-inline-end: 4px;
+      font-size: 14px;
+    }
+
+    .file-sharing-buttons-wrapper {
+      display: flex;
+
+      .file-sharing-btn {
+        --background: #c0a2fb;
+        --background-hover: #a880fa;
+        --background-activated: #9b6cf9;
+        --background-focused: #9b6cf9;
+        --color: #1a1a1a;
+
+        font-size: 12px;
+
+        &:first-child {
+          margin-inline-start: auto;
+        }
+      }
+    }
+  }
+}
+
+.event-notification {
+  .event-guests-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .event-guests-image-container {
+      margin-right: calc(20px / -1.5);
+      flex: 0 0 30%;
+      max-width: 45px;
+      position: relative;
+
+      app-image-shell.guest-image {
+        --image-shell-border-radius: 50%;
+
+        border: 2px solid #2d354e;
+        background: var(--page-background);
+        padding: 2px;
+      }
+
+      .has-more-guests {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: rgba(45, 53, 78, 0.6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        z-index: 2;
+
+        .guests-count {
+          font-size: 14px;
+          color: var(--page-background);
+          font-weight: 600;
+
+          &::before {
+            content: "+";
+            font-size: 14px;
+            color: var(--page-background);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .event-title {
+    margin-top: 0px;
+    margin-bottom: 8px;
+  }
+
+  .event-description {
+    font-size: 14px;
+    margin: 0px;
+  }
+
+  .event-date-wrapper {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    display: flex;
+
+    .date-item {
+      display: flex;
+
+      & + .date-item {
+        padding-inline-start: 16px;
+      }
+
+      .date-icon {
+        padding: 5px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        font-size: 20px;
+        color: #808080;
+      }
+
+      .date-values {
+        margin-inline-start: 8px;
+
+        .date-value {
+          display: block;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .date-value-alt {
+          display: block;
+          font-size: 12px;
+          color: #808080;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .event-buttons-wrapper {
+    display: flex;
+
+    .event-btn {
+      font-size: 12px;
+
+      &:first-child {
+        margin-inline-start: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+:host {
+  --page-background: var(--app-background-shade);
+  --page-margin: var(--app-fair-margin);
+}
+
+ion-content {
+  --background: var(--page-background);
+}
+
+ion-list {
+  --ion-item-background: transparent;
+}
+
+.contacts-filter {
+  @at-root #{selector-unify(&, 'ion-row')} {
+    --ion-grid-column-padding: 5px;
+  }
+
+  // ? In total, it should have the page-margin value (adding .ion-row padding)
+  padding: calc(var(--page-margin) - var(--ion-grid-column-padding));
+
+  .label-col {
+    display: flex;
+    align-items: center;
+  }
+
+  .filter-label {
+    color: #3a4155;
+    font-weight: 500;
+  }
+}
+
+.filter-select {
+  @at-root #{selector-unify(&, 'ion-select')} {
+    --placeholder-color: #b2b7c6;
+
+    color: #aeb5c2;
+
+    &::part(placeholder),
+    &::part(text) {
+      text-align: end;
+      margin-inline-end: 10px;
+      font-weight: 500;
+    }
+
+    &::part(icon) {
+      color: #aeb5c2;
+      opacity: 1;
+    }
+  }
+}
+
+.section-divider {
+  @at-root #{selector-unify(&, 'ion-item-divider')} {
+    --padding-start: var(--page-margin);
+    --inner-padding-end: var(--page-margin);
+    // ? Same as page background
+    --background: var(--page-background);
+    --color: #aeb5c2;
+  }
+
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.6px;
+  text-transform: uppercase;
+}
+
+.contact-item-wrapper {
+  --ion-grid-column-padding: 0px;
+
+  width: calc(100% - (var(--page-margin) * 2));
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 10px;
+  margin: 20px var(--page-margin);
+  background: #ffffff;
+}
+
+app-image-shell.contact-image {
+  --image-shell-border-radius: 12px;
+}
+
+.contact-details {
+  padding-inline-start: 10px;
+
+  &:not(:last-child) {
+    padding-inline-end: 10px;
+  }
+
+  .contact-name {
+    margin-top: 0px;
+    margin-bottom: 2px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #3f4458;
+  }
+
+  .contact-description {
+    margin: 0px;
+    font-size: 14px;
+    color: #bdc2cf;
+
+    &.anchored-description {
+      color: #87a5f9;
+    }
+  }
+}
+
+.contact-info {
+  .contact-date {
+    border-radius: 12px;
+    background: var(--page-background);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+
+    .date-name {
+      color: #c2c7d3;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.6px;
+      text-transform: uppercase;
+    }
+
+    .date-value {
+      color: #2d344c;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1;
+    }
+  }
+
+  .contact-location {
+    padding: 5px;
+  }
+}

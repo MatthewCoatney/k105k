@@ -1,0 +1,120 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="segment-wrapper">
+    <section>
+      <ion-segment class="categories-segment" (ionChange)="segmentChanged($event)" scrollable [value]="segmentValue">
+        <ion-segment-button value="food">
+          <div>
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}" class="category-image">
+              <app-image-shell animation="spinner" [src]="'./assets/sample-images/sliding-tabs-icons/food.png'" [alt]="'tab icon'"></app-image-shell>
+            </app-aspect-ratio>
+            <ion-label class="category-title">Food</ion-label>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="pharmacy">
+          <div>
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}"  class="category-image">
+              <app-image-shell animation="spinner" [src]="'./assets/sample-images/sliding-tabs-icons/pharmacy.png'" [alt]="'tab icon'"></app-image-shell>
+            </app-aspect-ratio>
+            <ion-label class="category-title">Pharm</ion-label>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="pets">
+          <div>
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}"  class="category-image">
+              <app-image-shell animation="spinner" [src]="'./assets/sample-images/sliding-tabs-icons/pets.png'" [alt]="'tab icon'"></app-image-shell>
+            </app-aspect-ratio>
+            <ion-label class="category-title">Pets</ion-label>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="fresh">
+          <div>
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}"  class="category-image">
+              <app-image-shell animation="spinner" [src]="'./assets/sample-images/sliding-tabs-icons/fresh.png'" [alt]="'tab icon'"></app-image-shell>
+            </app-aspect-ratio>
+            <ion-label class="category-title">Fresh</ion-label>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="drinks">
+          <div>
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}"  class="category-image">
+              <app-image-shell animation="spinner" [src]="'./assets/sample-images/sliding-tabs-icons/drinks.png'" [alt]="'tab icon'"></app-image-shell>
+            </app-aspect-ratio>
+            <ion-label class="category-title">Drinks</ion-label>
+          </div>
+        </ion-segment-button>
+      </ion-segment>
+    </section>
+  </div>
+
+
+  <div class="page-content">
+    <section [hidden]="segmentValue !== 'food'">
+      <ion-card *ngFor="let n of [1,2,3,4]; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>Card {{n}}</ion-card-subtitle>
+          <ion-card-title>FOOD</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's food... and break clear away, once in a while,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </section>
+    <section [hidden]="segmentValue !== 'pharmacy'">
+      <ion-card *ngFor="let n of [1,2]; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>Card {{n}}</ion-card-subtitle>
+          <ion-card-title>PHARMACY</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's food... and break clear away, once in a while,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </section>
+    <section [hidden]="segmentValue !== 'pets'">
+      <ion-card *ngFor="let n of [1,2,3,4,5]; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>Card {{n}}</ion-card-subtitle>
+          <ion-card-title>PETS</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's food... and break clear away, once in a while,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </section>
+    <section [hidden]="segmentValue !== 'fresh'">
+      <ion-card *ngFor="let n of [1]; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>Card {{n}}</ion-card-subtitle>
+          <ion-card-title>FRESH</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's food... and break clear away, once in a while,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </section>
+    <section [hidden]="segmentValue !== 'drinks'">
+      <ion-card *ngFor="let n of [1,2,3]; let i = index">
+        <ion-card-header>
+          <ion-card-subtitle>Card {{n}}</ion-card-subtitle>
+          <ion-card-title>DRINKS</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's food... and break clear away, once in a while,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+    </section>
+  </div>
+</ion-content>

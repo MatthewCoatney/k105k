@@ -1,0 +1,105 @@
+.line-series {
+  .line {
+    stroke-width: 5px;
+  }
+}
+
+ngx-charts-chart {
+  .line-chart.chart {
+    // padding: 20px;
+  }
+
+  g.x.axis {
+    g.tick {
+      &:first-child {
+        transform: translate(3%, 20px) !important;
+      }
+      &:last-child {
+        transform: translate(97%, 20px) !important;
+      }
+
+      // ? To style text on labels: https://github.com/swimlane/ngx-charts/issues/740
+      text {
+        fill: #8192b3;
+        // Override style
+        font-size: 14px !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // ? reference line on hover
+  rect.tooltip-anchor {
+    stroke: #8192b3;
+    stroke-width: 3px;
+  }
+}
+
+// ? Tooltip
+ngx-tooltip-content {
+  --chart-tooltip-background: #FF0DCB;
+  --chart-tooltip-background-contrast: #FFFFFF;
+  --chart-tooltip-margin: 6px;
+  --chart-tooltip-border-radius: 8px;
+
+  &.ngx-charts-tooltip-content {
+    &.type-tooltip {
+      background: var(--chart-tooltip-background);
+      color: var(--chart-tooltip-background-contrast);
+      padding: var(--chart-tooltip-margin);
+      font-size: 14px;
+      border-radius: var(--chart-tooltip-border-radius);
+    }
+
+    .tooltip-caret {
+      &.position-right {
+        border-right-color: var(--chart-tooltip-background) !important;
+      }
+      &.position-left {
+        border-left-color: var(--chart-tooltip-background) !important;
+      }
+      &.position-top {
+        border-top-color: var(--chart-tooltip-background) !important;
+      }
+      &.position-bottom {
+        border-bottom-color: var(--chart-tooltip-background) !important;
+      }
+    }
+
+    .tooltip-content {
+      .area-tooltip-container {
+        padding: 0px;
+
+        .tooltip-item {
+          padding: 0px;
+          color: var(--chart-tooltip-background-contrast);
+
+          &:not(:last-child) {
+            padding-bottom: calc(var(--chart-tooltip-margin) / 2);
+          }
+
+          .tooltip-item-color {
+            width: var(--chart-tooltip-border-radius);
+            height: var(--chart-tooltip-border-radius);
+            border-radius: 50%;
+            margin-inline-end: var(--chart-tooltip-margin);
+          }
+        }
+      }
+
+      .tooltip-label {
+        color: var(--chart-tooltip-background-contrast);
+        padding: 0px calc(var(--chart-tooltip-margin) / 2);
+        margin-bottom: var(--chart-tooltip-margin);
+        font-size: 14px;
+      }
+
+      .tooltip-val {
+        color: var(--chart-tooltip-background-contrast);
+        padding: 0px calc(var(--chart-tooltip-margin) / 2);
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}

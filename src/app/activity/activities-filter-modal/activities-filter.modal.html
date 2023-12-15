@@ -1,0 +1,38 @@
+<form class="create-user-form ion-page" [formGroup]="filterActivitiesForm" (ngSubmit)="filterActivities(filterActivitiesForm.value)">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Filter Activities</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-row class="checkbox-tags rounded-checkbox-tags" formArrayName="activities">
+      <ion-item lines="none" class="checkbox-tag rounded-tag" *ngFor="let activity of currentSelectedActivities;">
+        <ion-label class="tag-label">{{ activity.title }}</ion-label>
+        <ion-checkbox [formControlName]="activity.name"></ion-checkbox>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <div class="filters-actions">
+        <ion-button class="select-all-btn" (click)="selectAllFilters()">
+          Select All
+        </ion-button>
+        <ion-button class="deselect-all-btn" (click)="deselectAllFilters()">
+          Deselect All
+        </ion-button>
+      </div>
+    </ion-row>
+    <ion-row>
+      <div class="filters-actions" style="margin-top: 10px;">
+        <ion-button class="apply-filters-btn" (click)="applyFilters()">
+          Apply filters
+        </ion-button>
+      </div>
+    </ion-row>
+  </ion-content>
+</form>

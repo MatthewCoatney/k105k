@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Price Changer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <amplify-authenticator
+    signUpAttributes="['email', 'username']"
+    [hideSignUp]="true"
+    [loginMechanisms]="['username','email']"
+  >
+    <ng-template amplifySlot="sign-in-footer">
+      <div></div>
+    </ng-template>
+    <ng-template
+      amplifySlot="authenticated"
+      let-user="user"
+      let-signOut="signOut"
+    >
+      <div class="center">
+        <h2>Welcome, {{ user.username }}!</h2>
+      </div>
+      <br />
+      <!--ion-button expand="full" (click)="signOut()">Sign Out</ion-button-->
+
+      <ion-segment [(ngModel)]="selectTabs">
+        <ion-segment-button value="left">
+          <ion-label>Left</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="center">
+          <ion-label>Center</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="right">
+          <ion-label>Right</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <div *ngIf="selectTabs === 'left'">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmitLeft(menu.leftModel.value)"
+        >
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+          <formly-form
+            [form]="form"
+            [fields]="leftFields"
+            [model]="leftMenu | async"
+          ></formly-form>
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+                    <ion-button  expand="full" type="reset" class="btn btn-default"
+            >Clear</ion-button
+          >
+          <ion-button color="danger" (click)="onSubmitLeft(menu.modelLeft)" expand="full" type="button" class="btn btn-default"
+            >Reset</ion-button
+          >
+        </form>
+      </div>
+      <div *ngIf="selectTabs === 'center'">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmitCenter(menu.centerModel.value)"
+        >
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+          <formly-form
+            [form]="form"
+            [fields]="centerFields"
+            [model]="centerMenu | async"
+          ></formly-form>
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+                              <ion-button  expand="full" type="reset" class="btn btn-default"
+            >Clear</ion-button
+          >
+          <ion-button color="danger" (click)="onSubmitCenter(menu.modelCenter)" expand="full" type="button" class="btn btn-default"
+            >Reset</ion-button
+          >
+        </form>
+      </div>
+      <div *ngIf="selectTabs === 'right'">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmitRight(menu.rightModel.value)"
+        >
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+          <formly-form
+            [form]="form"
+            [fields]="rightFields"
+            [model]="rightMenu | async"
+          ></formly-form>
+          <ion-button expand="full" type="submit" class="btn btn-default"
+            >Submit</ion-button
+          >
+          <ion-button  expand="full" type="reset" class="btn btn-default"
+            >Clear</ion-button
+          >
+          <ion-button color="danger" (click)="onSubmitRight(menu.modelRight)" expand="full" type="button" class="btn btn-default"
+            >Reset</ion-button
+          >
+        </form>
+      </div>
+
+      <br />
+    </ng-template>
+  </amplify-authenticator>
+</ion-content>

@@ -1,0 +1,203 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>
+    <ion-label>Meetings</ion-label>
+    <ion-button>See All</ion-button>
+  </ion-list-header>
+  <div class="meetings-section">
+    <app-checkbox-wrapper class="meeting-wrapper">
+      <ion-card class="meeting-card" [style.--card-color]="'203,50,143'">
+        <ion-card-content class="meeting-card-content">
+          <ion-row>
+            <ion-col>
+              <p class="meeting-title">Product Planning</p>
+              <p class="meeting-hours">10:00 am - 11:00 am</p>
+                <div class="followers-list" *ngIf="agenda">
+                  <div class="follower-image-container" *ngFor="let user of agenda.friends | slice:3:6">
+                    <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                      <app-image-shell class="follower-image" animation="spinner" [src]="user.image" [alt]="'user image'">
+                      </app-image-shell>
+                    </app-aspect-ratio>
+                  </div>
+              </div>
+            </ion-col>
+            <ion-col size="3" class="checkbox-col">
+              <p class="meeting-day">Today</p>
+              <div class="checkbox-wrapper">
+                <ion-checkbox class="attending-checkbox" checked></ion-checkbox>
+                <p class="confirm-text">Confirm</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+    <app-checkbox-wrapper class="meeting-wrapper">
+      <ion-card class="meeting-card" [style.--card-color]="'42, 68, 148'">
+        <ion-card-content class="meeting-card-content">
+          <ion-row>
+            <ion-col>
+              <p class="meeting-title">PWA Session</p>
+              <p class="meeting-hours">11:30 am - 12:00 pm</p>
+              <div class="followers-list" *ngIf="agenda">
+                <div class="follower-image-container" *ngFor="let user of agenda.friends | slice:1:4">
+                  <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                    <app-image-shell class="follower-image" animation="spinner" [src]="user.image" [alt]="'user image'">
+                    </app-image-shell>
+                  </app-aspect-ratio>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="3" class="checkbox-col">
+              <p class="meeting-day">Today</p>
+              <div class="checkbox-wrapper">
+                <ion-checkbox class="attending-checkbox"></ion-checkbox>
+                <p class="confirm-text">Confirm</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+    <app-checkbox-wrapper class="meeting-wrapper">
+      <ion-card class="meeting-card" [style.--card-color]="'217,69,58'">
+        <ion-card-content class="meeting-card-content">
+          <ion-row>
+            <ion-col>
+              <p class="meeting-title">Design Meeting</p>
+              <p class="meeting-hours">11:00 am - 12:00 pm</p>
+              <div class="followers-list" *ngIf="agenda">
+                <div class="follower-image-container" *ngFor="let user of agenda.friends | slice:0:2">
+                  <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                    <app-image-shell class="follower-image" animation="spinner" [src]="user.image" [alt]="'user image'">
+                    </app-image-shell>
+                  </app-aspect-ratio>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="3" class="checkbox-col">
+              <p class="meeting-day">Tomorrow</p>
+              <div class="checkbox-wrapper">
+                <ion-checkbox class="attending-checkbox" checked></ion-checkbox>
+                <p class="confirm-text">Confirm</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+  </div>
+
+  <ion-list-header>
+    <ion-label>Tasks</ion-label>
+    <ion-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-list-header>
+  <div class="tasks-section">
+    <app-checkbox-wrapper class="task-wrapper">
+      <ion-card class="task-card">
+        <ion-card-content>
+          <div class="task-title-wrapper">
+            <ion-checkbox
+              class="task-checkbox"
+              color="secondary"
+            ></ion-checkbox>
+            <p class="task-title">Newsletter signup form</p>
+          </div>
+          <div class="task-content">
+            <div class="task-owner-image">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="follower-image" animation="spinner" [src]="'https://randomuser.me/api/portraits/women/44.jpg'" [alt]="'user image'">
+                </app-image-shell>
+              </app-aspect-ratio>
+            </div>
+            <p class="task-due-date">June 26</p>
+            <div class="task-icons">
+              <span class="icon-number">4</span>
+              <ion-icon name="chatbubble-outline"></ion-icon>
+              <span class="icon-number">2</span>
+              <ion-icon style="transform: rotate(90deg)" name="git-branch-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+    <app-checkbox-wrapper class="task-wrapper">
+      <ion-card class="task-card">
+        <ion-card-content>
+          <div class="task-title-wrapper">
+            <ion-checkbox class="task-checkbox" checked color="secondary"></ion-checkbox>
+            <p class="task-title">Client follow up</p>
+          </div>
+          <div class="task-content">
+            <div class="task-owner-image">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="follower-image" animation="spinner" [src]="'https://randomuser.me/api/portraits/men/12.jpg'" [alt]="'user image'">
+                </app-image-shell>
+              </app-aspect-ratio>
+            </div>
+            <p class="task-due-date">Jan 26</p>
+            <div class="task-icons">
+              <span class="icon-number">2</span>
+              <ion-icon name="chatbubble-outline"></ion-icon>
+              <span class="icon-number">1</span>
+              <ion-icon style="transform: rotate(90deg)" name="git-branch-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+    <app-checkbox-wrapper class="task-wrapper">
+      <ion-card class="task-card">
+        <ion-card-content>
+          <div class="task-title-wrapper">
+            <ion-checkbox class="task-checkbox" color="secondary"></ion-checkbox>
+            <p class="task-title">Meeting slides</p>
+            <p class="task-note">Overdue</p>
+          </div>
+          <div class="task-content">
+            <div class="task-owner-image">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="follower-image" animation="spinner" [src]="'https://randomuser.me/api/portraits/men/90.jpg'" [alt]="'user image'">
+                </app-image-shell>
+              </app-aspect-ratio>
+            </div>
+            <p class="task-due-date overdue">Feb 23</p>
+            <div class="task-icons">
+              <span class="icon-number">2</span>
+              <ion-icon name="chatbubble-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </app-checkbox-wrapper>
+  </div>
+
+  <ion-list-header>
+    <ion-label>Team Members</ion-label>
+  </ion-list-header>
+  <div class="team-members-section" *ngIf="agenda">
+    <ion-row class="team-member-list">
+      <ion-col size="5" class="team-member-card" *ngFor="let user of agenda.friends"> 
+        <div class="user-image-wrapper">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="user-image" animation="spinner" [src]="user.image" [alt]="'user image'">
+            </app-image-shell>
+          </app-aspect-ratio>
+        </div>
+        <div class="user-name">{{ user.name }}</div>
+        <div class="user-role">{{ user.job }}</div>
+        <ion-button expand="block" size="small" shape="round" class="user-action-button">Message</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

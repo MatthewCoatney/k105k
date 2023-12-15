@@ -1,0 +1,294 @@
+@import "theme/mixins/inputs/radio-tag";
+
+.mini-stats-row {
+  padding: 10px;
+}
+
+.mini-stat-col {
+  padding: 10px;
+}
+
+.highlighted-stat {
+  --stat-title-color: #42516a;
+
+  padding: 15px;
+  border-radius: 12px;
+  aspect-ratio: 1/1.2;
+  background: #f2f8fc;
+
+  &.dark-highlight {
+    --stat-title-color: #e7fcff;
+
+    background: #2b93e6;
+  }
+
+  // ? Stat highlight with flex properties
+  &.number-stat-outer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &.progress-bar-stat-outer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &.doughnut-chart-stat-outer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-title {
+    margin: 0px 0px 6px;
+    font-size: 3.6vw;
+    color: var(--stat-title-color);
+  }
+
+  .number-stat-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+
+    .stat-value {
+      font-size: 8vw;
+      font-weight: 800;
+      text-align: center;
+      color: #feffff;
+    }
+  
+    .stat-reference {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: #70bcf1;
+    }
+  }
+
+  .progress-bar-stat-wrapper {
+    --progress-bar-height: 20vw;
+    --progress-bar-width: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    .progress-bar-stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .stat-value {
+      color: #1e3461;
+      font-size: 4.6vw;
+      font-weight: 800;
+      line-height: 1;
+      padding-top: 14px;
+    }
+
+    .stat-reference {
+      color: #629acf;
+      font-size: 2.6vw;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .progress-bar-container {
+      // ! Same value as progressbar height
+      min-height: var(--progress-bar-height);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ion-progress-bar {
+        transform: rotate(-90deg);
+        // ? As it is rotated, height references the actual width of the object
+        height: var(--progress-bar-width);
+        // ? Half the height
+        border-radius: calc(var(--progress-bar-width)/2);
+        // ? As it is rotated, width references the actual height of the object
+        width: var(--progress-bar-height);
+
+        &::part(track) {
+          background: #d5e7f8;
+        }
+
+        // ? Inner bar
+        &::part(progress) {
+          // ? Ionic scales the progress bar. When scaling, the border radius gets distorted (see: https://codepen.io/thebabydino/pen/VJQMmJ)
+          // ! A workaround could be found here: https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/
+          border-radius: 0px;
+          background: #2c93e8;
+        }
+      }
+    }
+  }
+
+  .custom-doughnut-chart-wrapper {
+    display: flex;
+    justify-content: center;
+    // ! This value sets the height of the chart
+    height: 40vw;
+    width: 80%;
+    margin: auto 10%;
+  }
+}
+
+.radio-tags {
+  --page-margin: var(--app-fair-margin);
+  --page-background: var(--app-background-shade);
+
+  --page-tags-gutter: 5px;
+
+  padding: 0px calc(var(--page-margin) - var(--page-tags-gutter));
+  padding-inline-end: 0px;
+
+  @include radio-tag();
+
+  // ? Add a deeper selector to override default colors
+  .radio-tag {
+    --radio-tag-color: #6f82aa;
+    --radio-tag-background: transparent;
+    --radio-tag-active-color: #feffff;
+    --radio-tag-active-background: transparent;
+
+    padding: 0px var(--page-tags-gutter);
+    margin: 0px;
+
+    // ? Override styles
+    --border-radius: 0px;
+    --border-width: 0px;
+    --ripple-color: transparent;
+    --background-hover: transparent;
+    --color-hover: #feffff;
+
+    flex: auto;
+    &:last-child {
+      padding-inline-end: 0px;
+    }
+
+    // ? Custom styles
+    &.item-radio-checked {
+      --checked-decoration-height: 3px;
+      --checked-decoration-width: 50%;
+
+      .tag-label::after {
+        content: '';
+        width: var(--checked-decoration-width);
+        height: 3px;
+        background: #4081c3;
+        border-radius: 2px;
+        position: absolute;
+        // ? 5px is the label margin-bottom value
+        bottom: calc((5px - var(--checked-decoration-height)) / 2);
+        left: calc((100% - var(--checked-decoration-width)) / 2);
+      }
+    }
+
+    .tag-label {
+      font-size: 16px;
+      text-overflow: unset;
+      white-space: unset;
+      overflow: initial;
+    }
+  }
+}
+
+.custom-chart-outer {
+  padding: 20px 0px;
+  border-radius: 35px 35px 0px 0px;
+  background: #1e3466;
+  // ! half button height
+  margin-top: 25px;
+
+  .custom-chart-header {
+    display: flex;
+    margin: 20px;
+
+    .custom-chart-title {
+      font-size: 4vw;
+      color: #e4eaf0;
+      padding-inline-end: 30px;
+      margin: 0px;
+    }
+
+    ion-button.chart-data-btn {
+      --background: #2c93e8;
+      --background-hover: #146eb8;
+      --background-activated: #115b97;
+      --background-focused: #115b97;
+      --color: #e7feff;
+      --border-radius: 35%;
+      --padding-start: 15px;
+      --padding-end: 15px;
+
+      margin-inline-start: auto;
+      margin-inline-end: 0px;
+      // ! 25px from the height, 20px from the top margin of the header, and 20px from the padding of the wrapper element
+      margin-top: -65px;
+      height: 50px;
+
+      ion-icon {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .custom-chart-summary {
+    display: flex;
+    margin: 30px 20px;
+  }
+
+  .custom-chart-highlight-item {
+    padding-inline-end: 30px;
+
+    .highlight-data {
+      line-height: 1.3;
+
+      .highlight-value {
+        font-size: 6vw;
+        font-weight: 600;
+        color: #feffff;
+      }
+
+      .highlight-reference {
+        margin-inline-start: 5px;
+        font-size: 3.8vw;
+        font-weight: 500;
+        color: #6f82aa;
+      }
+    }
+      
+    .highlight-label {
+      margin-top: 5px;
+      font-size: 2.6vw;
+      font-weight: 500;
+      color: #4081c3;
+
+      &.alt-label {
+        color: #35548f;
+      }
+    }
+  }
+
+  .custom-chart-filters {
+    margin-inline-start: auto;
+  }
+
+  .custom-chart-wrapper {
+    display: flex;
+    justify-content: center;
+    // ! This value sets the height of the chart
+    height: 55vw;
+    width: 100%;
+    max-width: 100%;
+  }
+}

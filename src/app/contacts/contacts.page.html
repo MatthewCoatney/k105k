@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Contacts Dynamic List</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="contactsFiltersForm" (ngSubmit)="onSubmit(contactsFiltersForm.value)">
+    <ion-row class="contacts-filter">
+      <ion-col class="label-col">
+        <ion-label class="filter-label">53 Contacts</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-select class="filter-select" formControlName="contactsFilter" cancelText="Cancel" okText="OK" placeholder="Filter contacts">
+          <ion-select-option value="name">Name</ion-select-option>
+          <ion-select-option value="birthday">Birthday</ion-select-option>
+          <ion-select-option value="location">Home</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-list>
+    <ng-container *ngFor="let categorySection of filteredContacts;">
+      <ion-item-divider class="section-divider" sticky>
+        <ion-label>{{ categorySection?.label }}</ion-label>
+      </ion-item-divider>
+
+      <ng-container *ngFor="let contactItem of categorySection?.entries;">
+        <!-- ? Conditional template Outlet (see: https://stackoverflow.com/a/52448001/1116959) -->
+        <ng-container *ngTemplateOutlet="(currentContactsFilter === 'name') ? contactByName : ((currentContactsFilter === 'birthday') ? contactByBirthday : ((currentContactsFilter === 'location') ? contactByLocation : null)); context: { contact: contactItem }">
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- ? Contact filtered by name template -->
+    <ng-template #contactByName let-contact="contact">
+      <ion-row class="contact-item-wrapper">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="contact-image" [src]="contact?.picture" [alt]="contact?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col class="contact-details">
+          <h2 class="contact-name">{{ contact?.name }}</h2>
+          <p class="contact-description">{{ contact?.email }}</p>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? Contact filtered by birthday template -->
+    <ng-template #contactByBirthday let-contact="contact">
+      <ion-row class="contact-item-wrapper">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="contact-image" [src]="contact?.picture" [alt]="contact?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col class="contact-details">
+          <h2 class="contact-name">{{ contact?.name }}</h2>
+          <p class="contact-description anchored-description">{{ 'Turning '.concat(contact.birthday | appTimeAgo:true) }}</p>
+        </ion-col>
+        <ion-col size="2" class="contact-info">
+          <div class="contact-date">
+            <span class="date-name">{{ contact.birthday | date:'MMM' }}</span>
+            <span class="date-value">{{ contact.birthday | date:'d' }}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+    <!-- ? Contact filtered by location template -->
+    <ng-template #contactByLocation let-contact="contact">
+      <ion-row class="contact-item-wrapper">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="contact-image" [src]="contact?.picture" [alt]="contact?.name?.concat(' profile picture')"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col class="contact-details">
+          <h2 class="contact-name">{{ contact?.name }}</h2>
+          <p class="contact-description anchored-description">{{ contact?.location?.city.concat(', ').concat(contact?.location?.state) }}</p>
+        </ion-col>
+        <ion-col size="2" class="contact-info">
+          <div class="contact-location">
+            <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+              <app-image-shell [src]="'./assets/sample-images/simple-maps/'.concat(contact?.location?.map)" [alt]="'Los Angeles map'"></app-image-shell>
+            </app-aspect-ratio>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </ion-list>
+</ion-content>
