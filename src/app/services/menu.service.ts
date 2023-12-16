@@ -1,17 +1,12 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-
-import * as mutations from "../../graphql/mutations";
 import * as queries from "../../graphql/queries";
-import { Observable as ZenObservable } from "zen-observable-ts";
 import { onUpdateLeftMenu } from "../../graphql/subscriptions";
-import * as subscriptions from "../../graphql/subscriptions";
-import { GraphQLSubscription, GraphQLQuery } from "@aws-amplify/api";
+import { GraphQLSubscription } from "@aws-amplify/api";
 import { generateClient, type Client } from "aws-amplify/api";
 
 import {
-  Menu,
   LeftMenu,
   CenterMenu,
   RightMenu,
@@ -19,7 +14,6 @@ import {
   modelDefaultLeft,
   modelDefaultRight,
 } from "../login/models/menu";
-//import { OnUpdateLeftMenuSubscription } from "../API.service";
 
 @Injectable({
   providedIn: "root",
@@ -35,7 +29,7 @@ export class MenuService {
   );
   public centerModel: BehaviorSubject<CenterMenu> =
     new BehaviorSubject<CenterMenu>(null);
-  rightModel: BehaviorSubject<RightMenu> = new BehaviorSubject<RightMenu>(null);
+  public rightModel: BehaviorSubject<RightMenu> = new BehaviorSubject<RightMenu>(null);
 
   constructor() {
     this.client = generateClient();
@@ -44,21 +38,24 @@ export class MenuService {
 
   async initialize(): Promise<void> {
     await this.onList();
+    await this.subscribe();
   }
 
-  // async subscribe() {
-  //   // Subscribe to update of Todo
-  //   const updateSub = (await this.client.graphql({
-  //     query: onUpdateLeftMenu,
-  //   })) as GraphQLSubscription<any>;
+  async subscribe() {
+    // Subscribe to update of Todo
+    const updateSub = (await this.client.graphql({
+      query: onUpdateLeftMenu,
+    })) as GraphQLSubscription<any>;
 
-  //   updateSub.subscribe({
-  //     next: ({ data }) => console.log(data),
-  //     error: (error) => console.warn(error),
-  //   });
+    updateSub.subscribe({
+      next: ({ data }) => {
+        console.log(data)
+        this.leftModel.next(data.onUpdateLeftMenu);
+      },
+      error: (error) => console.warn(error),
+    });
 
-  //   //this.leftModel.next(newLeftMenu["data"].listLeftMenus.items[0]);
-  // }
+  }
 
   public async onUpdate(model: any, query: any) {
     // destructure obj to remove timestamps
