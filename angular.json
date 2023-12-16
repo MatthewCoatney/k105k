@@ -47,9 +47,6 @@
                 "input": "src/global.scss"
               },
               {
-                "input": "src/fonts.css"
-              },
-              {
                 "input": "node_modules/@videogular/ngx-videogular/fonts/videogular.css"
               }
             ],
