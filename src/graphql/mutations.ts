@@ -290,6 +290,7 @@ export const createRightMenu = /* GraphQL */ `
       carrotCake
       brownies
       cookies
+      juice
       beetIt
       carrotKale
       carrot
@@ -324,6 +325,7 @@ export const updateRightMenu = /* GraphQL */ `
       carrotCake
       brownies
       cookies
+      juice
       beetIt
       carrotKale
       carrot
@@ -358,6 +360,7 @@ export const deleteRightMenu = /* GraphQL */ `
       carrotCake
       brownies
       cookies
+      juice
       beetIt
       carrotKale
       carrot

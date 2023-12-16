@@ -84,6 +84,7 @@ export class RightMenu {
   carrotCake: number;
   brownies: number;
   cookies: number;
+  juice: number;
   beetIt: number;
   carrotKale: number;
   carrot: number;
@@ -786,6 +787,15 @@ export class Menu {
       },
     },
     {
+      key: "juice",
+      type: "input",
+      templateOptions: {
+        label: "Juice",
+        placeholder: "Enter Juice",
+        required: true,
+      },
+    },
+    {
       key: "beetIt",
       type: "input",
       templateOptions: {
@@ -935,6 +945,7 @@ export const modelDefaultRight: RightMenu = {
   carrotCake: 5.99,
   brownies: 3.99,
   cookies: 1.99,
+  juice: 9.99,
   beetIt: 9.99,
   carrotKale: 9.99,
   carrot: 9.99,

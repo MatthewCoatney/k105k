@@ -90,6 +90,7 @@ type RightMenu @model {
   carrotCake: Float!
   brownies: Float!
   cookies: Float!
+  juice: Float!
   beetIt: Float!
   carrotKale: Float!
   carrot: Float!

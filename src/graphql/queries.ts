@@ -202,6 +202,7 @@ export const getRightMenu = /* GraphQL */ `
       carrotCake
       brownies
       cookies
+      juice
       beetIt
       carrotKale
       carrot
@@ -238,6 +239,7 @@ export const listRightMenus = /* GraphQL */ `
         carrotCake
         brownies
         cookies
+        juice
         beetIt
         carrotKale
         carrot
