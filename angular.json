@@ -38,6 +38,9 @@
             },
             "styles": [
               {
+                "input": "src/fonts.css"
+              },
+              {
                 "input": "node_modules/@aws-amplify/ui-angular/theme.css"
               },
               {
