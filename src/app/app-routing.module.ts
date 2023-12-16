@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: "full",
   },
   {
-    path: "/menu/left",
+    path: "menu/left",
     loadChildren: () =>
       import("./menu/left/left.module").then((m) => m.LeftPageModule),
   },
