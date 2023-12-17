@@ -31,7 +31,7 @@ export class MenuService {
   public centerModel: BehaviorSubject<CenterMenu> =
     new BehaviorSubject<CenterMenu>(null);
   public rightModel: BehaviorSubject<RightMenu> =
-    new BehaviorSubject<RightMenu>(this.modelRight);
+    new BehaviorSubject<RightMenu>(null);
 
   constructor(private toastController: ToastController) {
     this.client = generateClient();
@@ -146,8 +146,4 @@ export class MenuService {
     }
   }
 }
-function graphqlOperation(
-  onCreateRestaurant: any
-): import("@aws-amplify/api-graphql").GraphQLOptionsV6<unknown, string> {
-  throw new Error("Function not implemented.");
-}
+

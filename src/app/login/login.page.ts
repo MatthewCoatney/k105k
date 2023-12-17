@@ -62,12 +62,46 @@ export class LoginPage {
   }
 
   public async onSubmitCenter(model) {
-    //await this.menu.onCreate(this.modelDefaultCenter,mutations.createCenterMenu);
-    await this.menu.onUpdate(model, mutations.updateCenterMenu);
+     if (model.id) {
+       console.log("assume we want to update it");
+       // assume we want to update it
+       await this.menu.onUpdate(model, mutations.updateCenterMenu);
+     } else if (!this.menu.centerModel.value) {
+       console.log("assume we want to create it");
+       // assume we want to create it
+       await this.menu.onCreate(model, mutations.createCenterMenu);
+     } else {
+       console.log("assume we want to replace it");
+       const id = this.menu.centerModel.value["id"];
+       const createdAt = this.menu.centerModel.value["createdAt"];
+       const updatedAt = this.menu.centerModel.value["updatedAt"];
+       // assume we want to replace it
+       await this.menu.onUpdate(
+         { id, createdAt, updatedAt, ...model },
+         mutations.updateCenterMenu
+       );
+     }
   }
 
   public async onSubmitRight(model) {
-    //await this.menu.onCreate(this.modelRight,mutations.createRightMenu);
-    await this.menu.onUpdate(model, mutations.updateRightMenu);
+     if (model.id) {
+       console.log("assume we want to update it");
+       // assume we want to update it
+       await this.menu.onUpdate(model, mutations.updateRightMenu);
+     } else if (!this.menu.rightModel.value) {
+       console.log("assume we want to create it");
+       // assume we want to create it
+       await this.menu.onCreate(model, mutations.createRightMenu);
+     } else {
+       console.log("assume we want to replace it");
+       const id = this.menu.rightModel.value["id"];
+       const createdAt = this.menu.rightModel.value["createdAt"];
+       const updatedAt = this.menu.rightModel.value["updatedAt"];
+       // assume we want to replace it
+       await this.menu.onUpdate(
+         { id, createdAt, updatedAt, ...model },
+         mutations.updateRightMenu
+       );
+     }
   }
 }
