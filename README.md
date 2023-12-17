@@ -1,7 +1,26 @@
-# Ionic Angular Amplify
+# High Country Dynamic Menu 
+
+Each menu screen is an ionic page containing
+an SVG wrapped in an ng-container. 
+
+The container
+subscribes to a menu object via async pipe and
+accesses the menu properties using ng interpolation.
+
+These menu pages are served to the digital kiosk
+through dedicated raspberryPi 4b devices connected
+to screen and accessing the digitalPi servers which
+are configured for this purpose.
+
+A phone or tablet then accesses the login screen
+of the app. Once logged in, the user is presented with tabs containing sets of fields allowing price changes to be made.
+
+Once submitted, the prices instantly update through an Angular Servie exposing a GraphQL subscription to the appsync api
+service via Amplify.
 
 
 # Documentation
+See Docs/DynamyKiosk
 
 ## Redirect
 Amplify can't interpret Angular paths. A rewrite

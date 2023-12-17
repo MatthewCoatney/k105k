@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 import * as queries from "../../graphql/queries";
-import { onUpdateLeftMenu } from "../../graphql/subscriptions";
+import { onUpdateCenterMenu, onUpdateLeftMenu, onUpdateRightMenu } from "../../graphql/subscriptions";
 import { GraphQLSubscription } from "@aws-amplify/api";
 import { generateClient, type Client } from "aws-amplify/api";
 
@@ -42,19 +42,44 @@ export class MenuService {
   }
 
   async subscribe() {
-    // Subscribe to update of Todo
-    const updateSub = (await this.client.graphql({
+    // Subscribe to update of LeftMenu
+    const updateLeftSub = (await this.client.graphql({
       query: onUpdateLeftMenu,
     })) as GraphQLSubscription<any>;
 
-    updateSub.subscribe({
+    updateLeftSub.subscribe({
       next: ({ data }) => {
-        console.log(data)
+        console.log(data);
         this.leftModel.next(data.onUpdateLeftMenu);
       },
       error: (error) => console.warn(error),
     });
 
+    // Subscribe to update of CenterMenu
+    const updateCenterSub = (await this.client.graphql({
+      query: onUpdateCenterMenu,
+    })) as GraphQLSubscription<any>;
+
+    updateCenterSub.subscribe({
+      next: ({ data }) => {
+        console.log(data);
+        this.centerModel.next(data.onUpdateCenterMenu);
+      },
+      error: (error) => console.warn(error),
+    });
+
+    // Subscribe to update of RightMenu
+    const updateRightSub = (await this.client.graphql({
+      query: onUpdateRightMenu,
+    })) as GraphQLSubscription<any>;
+
+    updateRightSub.subscribe({
+      next: ({ data }) => {
+        console.log(data);
+        this.rightModel.next(data.onUpdateRightMenu);
+      },
+      error: (error) => console.warn(error),
+    });
   }
 
   public async onUpdate(model: any, query: any) {
