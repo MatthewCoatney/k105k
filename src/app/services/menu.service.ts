@@ -14,6 +14,7 @@ import {
   modelDefaultLeft,
   modelDefaultRight,
 } from "../login/models/menu";
+import { ToastController } from "@ionic/angular";
 
 @Injectable({
   providedIn: "root",
@@ -29,11 +30,22 @@ export class MenuService {
   );
   public centerModel: BehaviorSubject<CenterMenu> =
     new BehaviorSubject<CenterMenu>(null);
-  public rightModel: BehaviorSubject<RightMenu> = new BehaviorSubject<RightMenu>(null);
+  public rightModel: BehaviorSubject<RightMenu> =
+    new BehaviorSubject<RightMenu>(this.modelRight);
 
-  constructor() {
+  constructor(private toastController: ToastController) {
     this.client = generateClient();
     this.initialize();
+  }
+
+  async presentToast(msg: string, position: "top" | "middle" | "bottom") {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
   }
 
   async initialize(): Promise<void> {
@@ -49,7 +61,6 @@ export class MenuService {
 
     updateLeftSub.subscribe({
       next: ({ data }) => {
-        console.log(data);
         this.leftModel.next(data.onUpdateLeftMenu);
       },
       error: (error) => console.warn(error),
@@ -62,7 +73,6 @@ export class MenuService {
 
     updateCenterSub.subscribe({
       next: ({ data }) => {
-        console.log(data);
         this.centerModel.next(data.onUpdateCenterMenu);
       },
       error: (error) => console.warn(error),
@@ -75,7 +85,6 @@ export class MenuService {
 
     updateRightSub.subscribe({
       next: ({ data }) => {
-        console.log(data);
         this.rightModel.next(data.onUpdateRightMenu);
       },
       error: (error) => console.warn(error),
@@ -95,6 +104,7 @@ export class MenuService {
           },
         },
       });
+      this.presentToast('Menu prices successfully updated.','top');
     } catch (e) {
       console.log("error updating menu...", e);
     }
@@ -108,8 +118,9 @@ export class MenuService {
           input: { ...model },
         },
       });
+      this.presentToast("Menu prices successfully created.", "top");
     } catch (e) {
-      console.log("error creating todo...", e);
+      console.log("error creating menu...", e);
     }
   }
 
@@ -131,7 +142,7 @@ export class MenuService {
       });
       this.rightModel.next(response["data"].listRightMenus.items[0]);
     } catch (e) {
-      console.log("error fetching left menu", e);
+      console.log("error fetching menu", e);
     }
   }
 }

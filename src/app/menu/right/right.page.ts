@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { RightMenu } from '../../login/models/menu';
-import { MenuService } from '../../services/menu.service';
+import { Component } from "@angular/core";
+import { Observable } from "rxjs";
+import { RightMenu } from "../../login/models/menu";
+import { MenuService } from "../../services/menu.service";
 
 @Component({
   selector: "app-right",
