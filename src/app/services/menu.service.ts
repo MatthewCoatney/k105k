@@ -2,7 +2,11 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 import * as queries from "../../graphql/queries";
-import { onUpdateCenterMenu, onUpdateLeftMenu, onUpdateRightMenu } from "../../graphql/subscriptions";
+import {
+  onUpdateCenterMenu,
+  onUpdateLeftMenu,
+  onUpdateRightMenu,
+} from "../../graphql/subscriptions";
 import { GraphQLSubscription } from "@aws-amplify/api";
 import { generateClient, type Client } from "aws-amplify/api";
 
@@ -104,8 +108,9 @@ export class MenuService {
           },
         },
       });
-      this.presentToast('Menu prices successfully updated.','top');
+      this.presentToast("Menu prices successfully updated.", "top");
     } catch (e) {
+      this.presentToast("Menu prices failed to update.", "top");
       console.log("error updating menu...", e);
     }
   }
@@ -146,4 +151,3 @@ export class MenuService {
     }
   }
 }
-

@@ -25,6 +25,9 @@
         <h2>Welcome, {{ user.username }}!</h2>
       </div>
       <br />
+      <div class="center">
+        <ion-button expand="full" (click)="signOut()">Sign Out</ion-button>
+      </div>
       <!--ion-button expand="full" (click)="signOut()">Sign Out</ion-button-->
 
       <ion-segment [(ngModel)]="selectTabs">
@@ -55,10 +58,15 @@
           <ion-button expand="full" type="submit" class="btn btn-default"
             >Submit</ion-button
           >
-                    <ion-button  expand="full" type="reset" class="btn btn-default"
+          <ion-button expand="full" type="reset" class="btn btn-default"
             >Clear</ion-button
           >
-          <ion-button color="danger" (click)="onSubmitLeft(menu.modelLeft)" expand="full" type="button" class="btn btn-default"
+          <ion-button
+            color="danger"
+            (click)="onSubmitLeft(menu.modelLeft)"
+            expand="full"
+            type="button"
+            class="btn btn-default"
             >Reset</ion-button
           >
         </form>
@@ -79,10 +87,15 @@
           <ion-button expand="full" type="submit" class="btn btn-default"
             >Submit</ion-button
           >
-                              <ion-button  expand="full" type="reset" class="btn btn-default"
+          <ion-button expand="full" type="reset" class="btn btn-default"
             >Clear</ion-button
           >
-          <ion-button color="danger" (click)="onSubmitCenter(menu.modelCenter)" expand="full" type="button" class="btn btn-default"
+          <ion-button
+            color="danger"
+            (click)="onSubmitCenter(menu.modelCenter)"
+            expand="full"
+            type="button"
+            class="btn btn-default"
             >Reset</ion-button
           >
         </form>
@@ -103,10 +116,15 @@
           <ion-button expand="full" type="submit" class="btn btn-default"
             >Submit</ion-button
           >
-          <ion-button  expand="full" type="reset" class="btn btn-default"
+          <ion-button expand="full" type="reset" class="btn btn-default"
             >Clear</ion-button
           >
-          <ion-button color="danger" (click)="onSubmitRight(menu.modelRight)" expand="full" type="button" class="btn btn-default"
+          <ion-button
+            color="danger"
+            (click)="onSubmitRight(menu.modelRight)"
+            expand="full"
+            type="button"
+            class="btn btn-default"
             >Reset</ion-button
           >
         </form>
