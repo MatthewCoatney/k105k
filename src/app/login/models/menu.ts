@@ -32,6 +32,7 @@ export class LeftMenu {
 }
 
 export class CenterMenu {
+  halfSandwich: number;
   ponderosa: number;
   midpines: number;
   midpinesSm: number;
@@ -351,6 +352,15 @@ export class Menu {
   ];
 
   public static centerFields: FormlyFieldConfig[] = [
+    {
+      key: "halfSandwich",
+      type: "input",
+      templateOptions: {
+        label: "Half Sandwich",
+        placeholder: "Enter Half Sandwich",
+        required: true,
+      },
+    },
     {
       key: "ponderosa",
       type: "input",
@@ -862,62 +872,63 @@ export class Menu {
 }
 
 export const modelDefaultLeft: LeftMenu = {
-  hites: 10.99,
-  hitesSm: 7.99,
-  creek: 12.99,
-  creekSm: 7.99,
-  pilot: 10.99,
-  pilotSm: 6.29,
-  chinese: 10.29,
-  chineseSm: 5.29,
-  southwest: 15.99,
-  southwestSm: 9.99,
-  green: 8.99,
-  greenSm: 4.99,
-  tuna: 8.99,
-  tunaSm: 4.99,
-  waldorf: 5.99,
+  hites: 12.99,
+  hitesSm: 8.29,
+  creek: 18.29,
+  creekSm: 9.99,
+  pilot: 12.29,
+  pilotSm: 7.29,
+  chinese: 10.09,
+  chineseSm: 5.09,
+  southwest: 14.99,
+  southwestSm: 8.99,
+  green: 12.99,
+  greenSm: 7.99,
+  tuna: 11.29,
+  tunaSm: 5.69,
+  waldorf: 5.89,
   waldorfSm: 2.99,
-  caesar: 11.99,
-  caesarSm: 7.49,
-  cup: 4.99,
+  caesar: 12.99,
+  caesarSm: 7.99,
+  cup: 3.99,
   bowl: 9.99,
-  foccacia: 1.99,
-  pbj: 4.99,
-  grilledChz: 4.99,
-  hamChz: 7.49,
-  coffee: 1.99,
-  tea: 1.99,
-  chai: 3.59,
-  soupSalad: 9.49,
+  foccacia: 1.29,
+  pbj: 5.99,
+  grilledChz: 5.99,
+  hamChz: 9.59,
+  coffee: 3.99,
+  tea: 2.99,
+  chai: 3.99,
+  soupSalad: 11.29,
 };
 
-export const modelDefaultCenter: CenterMenu = {
+export let modelDefaultCenter: CenterMenu = {
+  halfSandwich: 7.49,
   ponderosa: 9.99,
-  midpines: 12.29,
-  midpinesSm: 6.99,
+  midpines: 11.69,
+  midpinesSm: 0,
   captain: 12.49,
-  captainSm: 6.99,
+  captainSm: 0,
   bootjack: 9.99,
-  bootjackSm: 6.99,
+  bootjackSm: 0,
   fishcamp: 10.99,
-  fishcampSm: 6.99,
+  fishcampSm: 0,
   catheys: 11.29,
   laurel: 14.99,
   usona: 10.29,
   grizzly: 9.99,
-  grizzlySm: 6.99,
+  grizzlySm: 0,
   riven: 12.99,
-  rivenSm: 6.99,
+  rivenSm: 0,
   hornitos: 13.99,
   totokon: 16.99,
   portal: 9.99,
   meadows: 10.99,
-  meadowsSm: 6.99,
+  meadowsSm: 0,
   market: 11.99,
   mariposan: 10.99,
   blt: 10.99,
-  bltSm: 6.99,
+  bltSm: 0,
   sourcream: 0.99,
   hummus: 2.99,
   avocado: 3.29,
@@ -929,14 +940,22 @@ export const modelDefaultCenter: CenterMenu = {
   croissant: 1.99,
   sliceChz: 0.99,
 };
+modelDefaultCenter.bltSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.bootjackSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.captainSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.fishcampSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.grizzlySm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.meadowsSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.midpinesSm = modelDefaultCenter.halfSandwich;
+modelDefaultCenter.rivenSm = modelDefaultCenter.halfSandwich;
 
-export const modelDefaultRight: RightMenu = {
-  mono: 6.79,
-  bagby: 6.29,
-  french: 12.29,
+export let modelDefaultRight: RightMenu = {
+  mono: 9.99,
+  bagby: 7.99,
+  french: 14.29,
   quiche: 10.99,
-  burritoMeat: 16.99,
-  burritoVeggie: 14.59,
+  burritoMeat: 14.99,
+  burritoVeggie: 12.69,
   bagel: 1.99,
   creamChz: 1.29,
   muffin: 3.99,
@@ -944,13 +963,19 @@ export const modelDefaultRight: RightMenu = {
   chocCake: 3.99,
   carrotCake: 5.99,
   brownies: 3.99,
-  cookies: 1.99,
-  juice: 9.99,
-  beetIt: 9.99,
-  carrotKale: 9.99,
-  carrot: 9.99,
-  citrus: 9.99,
-  pureGreens: 9.99,
+  cookies: 1.49,
+  juice: 10.99,
+  beetIt: 0,
+  carrotKale: 0,
+  carrot: 0,
+  citrus: 0,
+  pureGreens: 0,
   smoothie: 9.99,
   boost: 1.00,
 };
+
+modelDefaultRight.carrot = modelDefaultRight.juice;
+modelDefaultRight.carrotKale = modelDefaultRight.juice;
+modelDefaultRight.citrus = modelDefaultRight.juice;
+modelDefaultRight.pureGreens = modelDefaultRight.juice;
+modelDefaultRight.beetIt = modelDefaultRight.juice;
