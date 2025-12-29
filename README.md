@@ -204,3 +204,30 @@ This is useful to track compilation ERRORS
 ### Private Github Repo Build Failure
 https://github.com/aws-amplify/amplify-hosting/issues/2904
 
+### Ionic CLI Missing Build Failure
+```term
+
+# Starting phase: build
+
+# Executing command: ionic build --prod
+
+2025-12-29T17:35:06.820Z [WARNING]: ionic: command not found
+
+2025-12-29T17:35:06.822Z [ERROR]: !!! Build failed
+
+2025-12-29T17:35:06.823Z [ERROR]: !!! Error: Command failed with exit code 127
+```
+Solution:
+Add ionic cli to the pre-build settings
+
+AWS Console -> [project] -> Overview -> Hosting -> Build settings
+
+```yaml
+frontend:
+    phases:
+        preBuild:
+            commands:
+                - '# Install Ionic CLI globally'
+                - 'npm install -g @ionic/cli' 
+                - 'npm ci --cache .npm --prefer-offline'
+```
