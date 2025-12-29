@@ -197,3 +197,10 @@ This is useful to track compilation ERRORS
 - To find the installed version of a specific package run `npm list package_name` (ex: `npm list @ionic/core`)
 - To find out which packages need to be updated, you can use `npm outdated -g --depth=0`
 - In particular, run `ng version` to output Angular CLI version and all Angular related installed packages and versions
+
+
+# Known Issues
+
+### Private Github Repo Build Failure
+https://github.com/aws-amplify/amplify-hosting/issues/2904
+

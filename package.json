@@ -1,18 +1,17 @@
 {
-  "name": "IonicFullApp-ELITE",
-  "description": "The most advanced and complete Mobile & PWA Ionic starter app template",
+  "name": "High Country Cafe Menu System",
+  "description": "Menu & Kiosk PWA System",
   "version": "0.2.0",
-  "author": "IonicThemes",
+  "author": "Matthew Coatney",
   "contributors": [
-    "Dayana <dayana@ionicthemes.com>",
-    "Agustín <agustin@ionicthemes.com>"
+    "Matthew <cmatthewcoatney@gmail.com>"
   ],
-  "homepage": "https://ionicthemes.com/",
+  "homepage": "https://smartmenu.com/",
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ionic serve",
+    "build": "ionic build --prod",
     "lint": "ng lint",
     "dev:ssr": "ng run app:serve-ssr",
     "serve:ssr": "node dist/app/server/main.js",
