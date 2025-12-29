@@ -22,17 +22,14 @@ service via Amplify.
 # Documentation
 See Docs/DynamyKiosk
 
-## Redirect
+## Rewrites & Redirects
+(See Google Docs -> Rewrites & Redirects)
 Amplify can't interpret Angular paths. A rewrite
-should be set up to allow direct access to pages
+should be set up from the amplify console to allow direct access to pages
 
-From the Amplify console, you can access the Rewrites and redirects menu item in left sidebar. From there you can update the redirect rule to these settings:
+## App Users
+See Google Docs Authentication document
 
-```zsh
-Source address: </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$)([^.]+$)/>
-Target address: /index.html
-Type: 200
-```
 ## Install dependencies
 Run `npm install` to install the project dependencies.
 
