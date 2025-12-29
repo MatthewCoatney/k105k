@@ -37,6 +37,7 @@ type LeftMenu @model {
 
 type CenterMenu @model {
   id: ID!
+  halfSandwich: Float!
   ponderosa: Float!
   midpines: Float!
   midpinesSm: Float!
