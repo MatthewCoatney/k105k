@@ -14,4 +14,17 @@ export class LeftPage {
   leftMenu: Observable<LeftMenu> = this.menu.leftModel.asObservable();
 
   constructor(public menu: MenuService) {}
+
+  ngOnInit() {
+   
+    // Subscribe to the observable to get the emitted value(s)
+    this.leftMenu.subscribe({
+      next: (menu: LeftMenu) => {
+        console.log('Class objects received:', menu);
+        // You can now interact with the data here
+      },
+      error: (err) => console.error('An error occurred:', err),
+      complete: () => console.log('Observable complete')
+    })
+  }
 }
