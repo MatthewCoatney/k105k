@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RightMenu } from 'src/app/login/models/menu';
-import { MenuService } from 'src/app/services/menu.service';
+import { RightMenu } from "../../login/models/menu";
+import { MenuService } from "../../services/menu.service";
 
 @Component({
   selector: 'app-right-alt',

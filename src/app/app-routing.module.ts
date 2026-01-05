@@ -23,6 +23,11 @@ const routes: Routes = [
       import("./menu/right/right.module").then((m) => m.RightPageModule),
   },
   {
+    path: "menu/altright",
+    loadChildren: () =>
+      import("./menu/right-alt/right-alt.module").then((m) => m.RightAltPageModule),
+  },
+  {
     path: "walkthrough",
     loadChildren: () =>
       import("./walkthrough/walkthrough.module").then(
@@ -161,8 +166,11 @@ const routes: Routes = [
       import("./menu/right/right.module").then((m) => m.RightPageModule),
   },
   {
-    path: 'right-alt',
-    loadChildren: () => import('./menu/right-alt/right-alt.module').then( m => m.RightAltPageModule)
+    path: "right-alt",
+    loadChildren: () =>
+      import("./menu/right-alt/right-alt.module").then(
+        (m) => m.RightAltPageModule
+      ),
   },
 ];
 @NgModule({
