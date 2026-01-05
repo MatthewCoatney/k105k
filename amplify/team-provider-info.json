@@ -1,22 +1,19 @@
 {
   "production": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-hchfmenu-production-143425-authRole",
-      "UnauthRoleArn": "arn:aws:iam::843979154499:role/amplify-hchfmenu-production-143425-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::843979154499:role/amplify-hchfmenu-production-143425-authRole",
+      "AuthRoleName": "amplify-menusystem2025-production-1278f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::843979154499:role/amplify-menusystem2025-production-1278f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::843979154499:role/amplify-menusystem2025-production-1278f-authRole",
       "Region": "us-west-1",
-      "DeploymentBucketName": "amplify-hchfmenu-production-143425-deployment",
-      "UnauthRoleName": "amplify-hchfmenu-production-143425-unauthRole",
-      "StackName": "amplify-hchfmenu-production-143425",
-      "StackId": "arn:aws:cloudformation:us-west-1:843979154499:stack/amplify-hchfmenu-production-143425/5f6e20f0-df86-11f0-8fc8-0634772ed7af",
-      "AmplifyAppId": "d2saz89yj3pwe3"
+      "DeploymentBucketName": "amplify-menusystem2025-production-1278f-deployment",
+      "UnauthRoleName": "amplify-menusystem2025-production-1278f-unauthRole",
+      "StackName": "amplify-menusystem2025-production-1278f",
+      "StackId": "arn:aws:cloudformation:us-west-1:843979154499:stack/amplify-menusystem2025-production-1278f/5ff64510-df78-11f0-8664-06f0b81175a5",
+      "AmplifyAppId": "d1f6iu2eooind3"
     },
     "categories": {
       "auth": {
         "hchfmenu3419dff5": {}
-      },
-      "api": {
-        "hchfmenu": {}
       }
     }
   }
