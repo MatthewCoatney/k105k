@@ -132,6 +132,7 @@ export const createCenterMenu = /* GraphQL */ `
   ) {
     createCenterMenu(input: $input, condition: $condition) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
@@ -180,6 +181,7 @@ export const updateCenterMenu = /* GraphQL */ `
   ) {
     updateCenterMenu(input: $input, condition: $condition) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
@@ -228,6 +230,7 @@ export const deleteCenterMenu = /* GraphQL */ `
   ) {
     deleteCenterMenu(input: $input, condition: $condition) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm

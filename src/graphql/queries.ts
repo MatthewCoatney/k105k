@@ -90,6 +90,7 @@ export const getCenterMenu = /* GraphQL */ `
   query GetCenterMenu($id: ID!) {
     getCenterMenu(id: $id) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
@@ -140,6 +141,7 @@ export const listCenterMenus = /* GraphQL */ `
     listCenterMenus(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        halfSandwich
         ponderosa
         midpines
         midpinesSm

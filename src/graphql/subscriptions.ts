@@ -122,6 +122,7 @@ export const onCreateCenterMenu = /* GraphQL */ `
   ) {
     onCreateCenterMenu(filter: $filter) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
@@ -169,6 +170,7 @@ export const onUpdateCenterMenu = /* GraphQL */ `
   ) {
     onUpdateCenterMenu(filter: $filter) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
@@ -216,6 +218,7 @@ export const onDeleteCenterMenu = /* GraphQL */ `
   ) {
     onDeleteCenterMenu(filter: $filter) {
       id
+      halfSandwich
       ponderosa
       midpines
       midpinesSm
