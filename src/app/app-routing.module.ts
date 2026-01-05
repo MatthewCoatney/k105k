@@ -160,6 +160,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./menu/right/right.module").then((m) => m.RightPageModule),
   },
+  {
+    path: 'right-alt',
+    loadChildren: () => import('./menu/right-alt/right-alt.module').then( m => m.RightAltPageModule)
+  },
 ];
 @NgModule({
   imports: [
