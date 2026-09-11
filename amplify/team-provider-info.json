@@ -16,5 +16,26 @@
         "hchfmenu3419dff5": {}
       }
     }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-menusystem2025-dev-183930-authRole",
+      "UnauthRoleArn": "arn:aws:iam::743186642507:role/amplify-menusystem2025-dev-183930-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::743186642507:role/amplify-menusystem2025-dev-183930-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-menusystem2025-dev-183930-deployment",
+      "UnauthRoleName": "amplify-menusystem2025-dev-183930-unauthRole",
+      "StackName": "amplify-menusystem2025-dev-183930",
+      "StackId": "arn:aws:cloudformation:us-east-1:743186642507:stack/amplify-menusystem2025-dev-183930/a3583750-ad81-11f1-bcfa-0affe6d83d75",
+      "AmplifyAppId": "d35ah5vrwqsbti"
+    },
+    "categories": {
+      "auth": {
+        "hchfmenu3419dff5": {}
+      },
+      "api": {
+        "hchfmenu": {}
+      }
+    }
   }
 }
