@@ -29,7 +29,12 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              {
+                "glob": "**/*",
+                "input": "src/share",
+                "output": "share"
+              }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
