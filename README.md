@@ -1,230 +1,361 @@
-# High Country Dynamic Menu 
+# The Seawich — Digital Menu System
+
+<p align="center">
+  <img src="src/assets/social/seawich-social-card.png" alt="The Seawich Digital Menu System" width="900">
+</p>
+
+<p align="center">
+  <strong>A cloud-connected digital menu and remote price-management system designed for Raspberry Pi signage.</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-15-DD0031?logo=angular&logoColor=white" alt="Angular">
+  <img src="https://img.shields.io/badge/Ionic-6-3880FF?logo=ionic&logoColor=white" alt="Ionic">
+  <img src="https://img.shields.io/badge/AWS-Amplify-FF9900?logo=awsamplify&logoColor=white" alt="AWS Amplify">
+  <img src="https://img.shields.io/badge/API-GraphQL-E10098?logo=graphql&logoColor=white" alt="GraphQL">
+  <img src="https://img.shields.io/badge/Database-DynamoDB-4053D6?logo=amazondynamodb&logoColor=white" alt="DynamoDB">
+  <img src="https://img.shields.io/badge/Auth-Cognito-FF9900?logo=amazonaws&logoColor=white" alt="Amazon Cognito">
+</p>
+
+---
 
-Each menu screen is an ionic page containing
-an SVG wrapped in an ng-container. 
+## Overview
 
-The container
-subscribes to a menu object via async pipe and
-accesses the menu properties using ng interpolation.
+**The Seawich** is a full-stack digital signage and menu-management system designed for restaurants, cafés, and similar businesses.
 
-These menu pages are served to the digital kiosk
-through dedicated raspberryPi 4b devices connected
-to screen and accessing the digitalPi servers which
-are configured for this purpose.
+The system separates customer-facing digital menu displays from an administrative price-management interface. Menu screens can run continuously on Raspberry Pi-connected displays while authorized users manage pricing remotely through a browser.
 
-A phone or tablet then accesses the login screen
-of the app. Once logged in, the user is presented with tabs containing sets of fields allowing price changes to be made.
+Menu data is persisted through AWS AppSync and Amazon DynamoDB and consumed by the Angular/Ionic application.
 
-Once submitted, the prices instantly update through an Angular Servie exposing a GraphQL subscription to the appsync api
-service via Amplify.
+This project was originally developed for a real restaurant deployment and has been converted into a fictionalized portfolio demonstration.
 
+---
 
-# Documentation
-See Docs/DynamyKiosk
+## Live Demo
 
-## Rewrites & Redirects
-(See Google Docs -> Rewrites & Redirects)
-Amplify can't interpret Angular paths. A rewrite
-should be set up from the amplify console to allow direct access to pages
+### Digital Menu Displays
 
-## App Users
-See Google Docs Authentication document
+| Display | Demo |
+| --- | --- |
+| Left Menu | https://main.d26v2pfw328oke.amplifyapp.com/menu/left |
+| Center Menu | https://main.d26v2pfw328oke.amplifyapp.com/menu/center |
+| Right Menu | https://main.d26v2pfw328oke.amplifyapp.com/menu/right |
+| Alternate Right Menu | https://main.d26v2pfw328oke.amplifyapp.com/menu/altright |
 
-## Install dependencies
-Run `npm install` to install the project dependencies.
+### Price Manager
 
-## Development Workflow
+https://main.d26v2pfw328oke.amplifyapp.com/auth/login
 
-Run `ionic build` or `ionic build --prod` to build the project
+The management interface demonstrates authenticated remote price management using Amazon Cognito, AWS AppSync, GraphQL, and DynamoDB.
 
-### To test the app in the browser
+---
 
-Run `ionic serve` to start a live-reload dev server
+## System Architecture
 
-### To test the app with Server Side Rendering
+    ┌────────────────────────┐
+    │   Administrative UI    │
+    │     Price Manager      │
+    └───────────┬────────────┘
+                │
+                │ Cognito Authentication
+                ▼
+    ┌────────────────────────┐
+    │      AWS AppSync       │
+    │       GraphQL API      │
+    └───────────┬────────────┘
+                │
+                ▼
+    ┌────────────────────────┐
+    │    Amazon DynamoDB     │
+    │       Menu Data        │
+    └───────────┬────────────┘
+                │
+                ▼
+    ┌────────────────────────┐
+    │    Angular + Ionic     │
+    │   Digital Menu App     │
+    └───────────┬────────────┘
+                │
+                ▼
+    ┌────────────────────────┐
+    │      Raspberry Pi      │
+    │    Signage Displays    │
+    └────────────────────────┘
 
-Run `npm run dev:ssr`
+The browser-based menu application allows the display hardware to remain lightweight while the application state and pricing data are managed centrally in AWS.
 
-In production, run `npm run build:ssr && npm run serve:ssr`
+---
 
-### To test the app as a Native App
-This project uses [Capacitor](https://capacitor.ionicframework.com/docs/) (spiritual successor to Cordova).
+## Technology Stack
 
-[Read this post](https://ionicthemes.com/tutorials/about/native-cross-platform-web-apps-with-ionic-capacitor) to get an introduction about Capacitor and learn the main differences between Capacitor and Cordova.
+| Layer | Technology |
+| --- | --- |
+| Frontend | Angular 15 |
+| UI Framework | Ionic 6 |
+| Language | TypeScript |
+| API | AWS AppSync |
+| API Protocol | GraphQL |
+| Database | Amazon DynamoDB |
+| Authentication | Amazon Cognito |
+| Cloud Integration | AWS Amplify |
+| Hosting / CI/CD | AWS Amplify Hosting |
+| Hardware Target | Raspberry Pi |
+| Source Control | Git / GitHub |
 
-Before starting make sure to read the [Capacitor Required Dependencies](https://capacitor.ionicframework.com/docs/getting-started/dependencies).
+---
 
-The Capacitor workflow involves a few consistent tasks:
-- [Develop and build your Web App](https://capacitor.ionicframework.com/docs/basics/workflow/#1-develop-and-build-your-web-app)
-- [Copy your Web Assets](https://capacitor.ionicframework.com/docs/basics/workflow/#2-copy-your-web-assets)
-- [Open your Native IDE](https://capacitor.ionicframework.com/docs/basics/workflow/#3-open-your-native-ide)
-- [Periodic Maintenance](https://capacitor.ionicframework.com/docs/basics/workflow/#4-periodic-maintenance)
+## Key Features
 
-#### Building your web code​
-> Once you are ready to test your web app on a mobile device, you'll need to build your web app for distribution.
+### Multi-Screen Digital Signage
 
-Run `ionic build`
+The application exposes independent routes for multiple physical menu displays:
 
-#### Syncing your web code to your Capacitor project​
-> Once your web code has been built for distribution, you will need to push your web code to the web native Capacitor application.
+    /menu/left
+    /menu/center
+    /menu/right
+    /menu/altright
 
-Run `npx cap sync`
+Each Raspberry Pi display can therefore launch directly into the menu view intended for that screen.
 
-> Running `npx cap sync` will copy over your already built web bundle to both your Android and iOS projects as well as update the native dependencies that Capacitor uses.
+### Remote Price Management
 
-#### Testing your Capacitor app
-> Once you've synced over your web bundle to your native project, it is time to test your application on a mobile device.
+Menu pricing is stored as data rather than embedded permanently in the visual design.
 
-Run `npx cap run ios` and `npx cap run android`
+An authorized user can update prices through the management interface without:
 
-##### Open your Native IDE​
-> If you'd like more control over your native project you can quickly open the native IDEs using the Capacitor CLI.
+- modifying source code
+- rebuilding menu artwork
+- physically accessing the display hardware
+- redeploying the frontend for routine price changes
 
-Run `npx cap open ios` and `npx cap open android`
+### Cloud-Backed Menu Data
 
-#### iOS Platform
-This app has an iOS folder which contains the iOS native app.
-Read how to [build this app for iOS](https://capacitor.ionicframework.com/docs/basics/building-your-app#ios).
+AWS AppSync provides the GraphQL API between the frontend and DynamoDB.
 
-#### Android Platform
-This app has an android folder which contains the Android native app.
-Read how to [build this app for Android](https://capacitor.ionicframework.com/docs/basics/building-your-app#android).
+The principal menu models are:
 
-### Want to use Cordova?
-The ELITE version of the template uses Capacitor instead of Cordova, however, if you are not yet ready to use it, in the following link we show you how to remove Capacitor and add Cordova to this project: https://ionic-4-full-starter-app-docs.ionicthemes.com/capacitor#steps-to-remove-capacitor-and-add-cordova
+    LeftMenu
+    CenterMenu
+    RightMenu
 
-## Support
-Drop us a line to contact@ionicthemes.com
+### Authentication
 
-## Acknowledgements
-This template uses some icons inspired in [Flaticon](https://www.flaticon.com/). If you want to use the original icons in your app, please make sure you grab a new license that fit your use case when modifying this template. We currently use the `Free for commercial use WITH ATTRIBUTION` license in this template as a way to showcase and promote the awesome work and [designs by **catkuro** from Flaticon](https://www.flaticon.com/packs/home-decor).
+Amazon Cognito provides authentication for the administrative price-management workflow.
 
-### Committing code
-To ensure code quality, we follow and enforce the [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines)
-These guidelines define a Commit Message Format and certain rules that will help teams achieve consistency with version control and source code management practices.
+The customer-facing menu displays remain separate from the management interface.
 
-#### Commit Message Format
-Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
-format that includes a **type**, a **scope** and a **subject**:
+### Raspberry Pi Signage
 
-```
-<type>(<scope>): <subject>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
+The frontend was designed for browser-based presentation on Raspberry Pi hardware connected to digital displays.
 
-The **header** is mandatory and the **scope** of the header is optional.
+This keeps the signage client simple while allowing application logic and data management to remain cloud-connected.
 
-Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
-to read on GitHub as well as in various git tools.
+### Continuous Deployment
 
-The footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
+The GitHub `main` branch is connected to AWS Amplify Hosting.
 
-Samples: (even more [samples](https://github.com/angular/angular/commits/master))
+Changes pushed to the repository can be automatically built and deployed to the hosted application.
 
-```
-docs(changelog): update changelog to beta.5
-```
-```
-fix(release): need to depend on latest rxjs and zone.js
+---
 
-The version in our package.json gets copied to the one we publish, and users need the latest of these.
-```
+## Project Structure
 
-#### Revert
-If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+    src/
+    ├── app/
+    │   ├── auth/
+    │   ├── login/
+    │   │   └── models/
+    │   └── menu/
+    │       ├── left/
+    │       ├── center/
+    │       ├── right/
+    │       └── right-alt/
+    ├── assets/
+    │   ├── branding/
+    │   ├── food/
+    │   └── social/
+    └── graphql/
 
-#### Type
-Must be one of the following:
+    amplify/
+    └── backend/
+        ├── api/
+        └── auth/
 
-* **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-* **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-* **docs**: Documentation only changes
-* **feat**: A new feature
-* **fix**: A bug fix
-* **perf**: A code change that improves performance
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **test**: Adding missing tests or correcting existing tests
+The individual menu routes allow the same application to support a multi-display installation without maintaining separate applications for each screen.
 
-#### Scope
-The scope should be the name of the npm package affected (as perceived by the person reading the changelog generated from commit messages.
+---
 
-The following is the list of supported scopes:
+## AWS Backend
 
-* **walkthrough-page**
-* **login-page**
-* **preload-image-component**
+The application uses an AWS Amplify Gen 1 backend.
 
-There are currently a few exceptions:
+### AWS AppSync
 
-* **packaging**: used for changes that change the npm package layout in all of our packages, e.g.
-  public path changes, package.json changes done to all packages, d.ts file/format changes, changes
-  to bundles, etc.
-* **changelog**: used for updating the release notes in CHANGELOG.md
-* none/empty string: useful for `style`, `test` and `refactor` changes that are done across all
-  packages (e.g. `style: add missing semicolons`) and for docs changes that are not related to a
-  specific package (e.g. `docs: fix typo in tutorial`).
+AppSync exposes the GraphQL API used to retrieve and update menu data.
 
-#### Subject
-The subject contains a succinct description of the change:
+### Amazon DynamoDB
 
-* use the imperative, present tense: "change" not "changed" nor "changes"
-* don't capitalize the first letter
-* no dot (.) at the end
+DynamoDB provides persistent storage for menu pricing and related application data.
 
-#### Body
-Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
-The body should include the motivation for the change and contrast this with previous behavior.
+### Amazon Cognito
 
-#### Footer
-The footer should contain any information about **Breaking Changes** and is also the place to
-reference GitHub issues that this commit **Closes**.
+Cognito provides authentication for the administrative interface.
 
-**Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
+### AWS Amplify
 
+Amplify manages the application's AWS integration and hosted deployment workflow.
 
-## Troubleshooting
-### See what dependencies and versions you have installed in your project
-This is useful to track compilation ERRORS
+---
 
-- Run `npm ls` to list all installed packages
-- To find the installed version of a specific package run `npm list package_name` (ex: `npm list @ionic/core`)
-- To find out which packages need to be updated, you can use `npm outdated -g --depth=0`
-- In particular, run `ng version` to output Angular CLI version and all Angular related installed packages and versions
+## Local Development
 
+### Prerequisites
 
-# Known Issues
+Install:
 
-### Private Github Repo Build Failure
-https://github.com/aws-amplify/amplify-hosting/issues/2904
+- Node.js
+- npm
+- Angular CLI
+- Ionic CLI
+- AWS Amplify CLI
 
-### Ionic CLI Missing Build Failure
-```term
+### Clone
 
-# Starting phase: build
+    git clone git@github.com:MatthewCoatney/k105k.git
+    cd k105k
 
-# Executing command: ionic build --prod
+### Install dependencies
 
-2025-12-29T17:35:06.820Z [WARNING]: ionic: command not found
+    npm install
 
-2025-12-29T17:35:06.822Z [ERROR]: !!! Build failed
+### Start the development server
 
-2025-12-29T17:35:06.823Z [ERROR]: !!! Error: Command failed with exit code 127
-```
-Solution:
-Add ionic cli to the pre-build settings
+    npm start
 
-AWS Console -> [project] -> Overview -> Hosting -> Build settings
+### Production build
 
-```yaml
-frontend:
-    phases:
+    npm run build
+
+The browser build is generated at:
+
+    dist/app/browser
+
+---
+
+## Deployment
+
+The application is deployed through AWS Amplify Hosting from the `main` branch.
+
+The Amplify build configuration is:
+
+    version: 1
+    frontend:
+      phases:
         preBuild:
-            commands:
-                - '# Install Ionic CLI globally'
-                - 'npm install -g @ionic/cli' 
-                - 'npm ci --cache .npm --prefer-offline'
-```
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: dist/app/browser
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+
+A successful push to `main` triggers the Amplify deployment pipeline.
+
+---
+
+## Design and Migration
+
+The digital menu screens use detailed SVG-based layouts originally created for large-format restaurant signage.
+
+For the portfolio edition, the application was converted into the fictional **The Seawich** brand while preserving the underlying engineering.
+
+The portfolio conversion included:
+
+- replacing proprietary restaurant branding
+- fictionalizing location-specific menu names
+- replacing food photography
+- centralizing application branding assets
+- migrating AWS backend resources
+- restoring menu data in DynamoDB
+- preserving the existing AppSync data model
+- configuring Cognito authentication
+- configuring Amplify Hosting
+- adding application and social-sharing metadata
+- cleaning legacy design and export artifacts
+
+The result preserves the functional system while separating the portfolio demonstration from the original restaurant identity.
+
+---
+
+## Engineering Decisions
+
+### Presentation and Data Are Separated
+
+Menu layouts define how information is presented, while prices are maintained independently as cloud-backed data.
+
+That separation allows routine business changes without redesigning or rebuilding the signage.
+
+### One Application, Multiple Displays
+
+Each display has its own route rather than requiring an independent application build.
+
+This reduces deployment complexity and keeps the signage system maintainable.
+
+### Remote Administration
+
+The price-management workflow removes the requirement for direct access to Raspberry Pi hardware when menu pricing changes.
+
+### Managed AWS Services
+
+AppSync, DynamoDB, Cognito, and Amplify provide the API, persistence, authentication, and deployment layers without requiring a conventional always-on application server.
+
+### Infrastructure Stability
+
+Some internal AWS resource identifiers retain legacy names.
+
+Those identifiers are implementation details rather than customer-facing branding, and unnecessary renaming would introduce migration risk without improving application functionality.
+
+---
+
+## Portfolio Context
+
+The Seawich demonstrates an end-to-end solution spanning:
+
+**Digital signage → Angular/Ionic frontend → authentication → GraphQL → DynamoDB → AWS deployment → Raspberry Pi hardware**
+
+The project is intended to demonstrate more than a static interface. It represents a working system in which frontend software, cloud infrastructure, persistent data, authentication, deployment automation, and physical display hardware operate as parts of one solution.
+
+---
+
+## Repository Notes
+
+This repository contains a portfolio demonstration derived from an earlier production-oriented project.
+
+The restaurant identity, menu names, imagery, and other presentation elements have been fictionalized for public demonstration.
+
+AWS credentials, secrets, private configuration, and production customer information should never be committed to this repository.
+
+---
+
+## Author
+
+**Matthew Coatney**
+
+Software Engineer / AWS Developer
+
+GitHub: https://github.com/MatthewCoatney
+
+Portfolio: https://matthewcoatney.dev
+
+---
+
+<p align="center">
+  <strong>The Seawich</strong><br>
+  Digital menus. Remote management. Cloud-backed infrastructure.
+</p>
