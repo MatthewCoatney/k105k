@@ -1,0 +1,129 @@
+{
+    "Items": [
+        {
+            "bacon": {
+                "N": "1.59"
+            },
+            "laurel": {
+                "N": "14.99"
+            },
+            "grizzly": {
+                "N": "9.99"
+            },
+            "bootjackSm": {
+                "N": "7.49"
+            },
+            "totokon": {
+                "N": "16.99"
+            },
+            "blt": {
+                "N": "10.99"
+            },
+            "ciabatta": {
+                "N": "1.49"
+            },
+            "meadows": {
+                "N": "10.99"
+            },
+            "ponderosa": {
+                "N": "9.99"
+            },
+            "hornitos": {
+                "N": "13.99"
+            },
+            "riven": {
+                "N": "12.99"
+            },
+            "halfSandwich": {
+                "N": "7.49"
+            },
+            "hummus": {
+                "N": "2.99"
+            },
+            "bltSm": {
+                "N": "7.49"
+            },
+            "catheys": {
+                "N": "11.29"
+            },
+            "market": {
+                "N": "11.99"
+            },
+            "captain": {
+                "N": "12.49"
+            },
+            "pickles": {
+                "N": "1.29"
+            },
+            "fishcamp": {
+                "N": "10.99"
+            },
+            "sourcream": {
+                "N": "0.99"
+            },
+            "grizzlySm": {
+                "N": "7.49"
+            },
+            "bootjack": {
+                "N": "9.99"
+            },
+            "id": {
+                "S": "54e783dd-b2cf-4e9d-9174-d6f274f2969b"
+            },
+            "sliceChz": {
+                "N": "0.99"
+            },
+            "__typename": {
+                "S": "CenterMenu"
+            },
+            "rivenSm": {
+                "N": "7.49"
+            },
+            "midpinesSm": {
+                "N": "7.49"
+            },
+            "extraveg": {
+                "N": "0.69"
+            },
+            "mariposan": {
+                "N": "10.99"
+            },
+            "avocado": {
+                "N": "3.29"
+            },
+            "createdAt": {
+                "S": "2026-09-11T16:24:53.647Z"
+            },
+            "fakin": {
+                "N": "1.59"
+            },
+            "croissant": {
+                "N": "1.99"
+            },
+            "midpines": {
+                "N": "11.69"
+            },
+            "meadowsSm": {
+                "N": "7.49"
+            },
+            "fishcampSm": {
+                "N": "7.49"
+            },
+            "updatedAt": {
+                "S": "2026-09-11T16:24:53.647Z"
+            },
+            "usona": {
+                "N": "10.29"
+            },
+            "captainSm": {
+                "N": "7.49"
+            },
+            "portal": {
+                "N": "9.99"
+            }
+        }
+    ],
+    "Count": 1,
+    "ScannedCount": 1,
+    "ConsumedCapacity": null
+}

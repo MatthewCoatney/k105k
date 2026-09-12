@@ -1,0 +1,167 @@
+{
+    "Items": [
+        {
+            "carrotKale": {
+                "N": "10.99"
+            },
+            "muffin": {
+                "N": "3.99"
+            },
+            "bagel": {
+                "N": "1.99"
+            },
+            "brownies": {
+                "N": "3.99"
+            },
+            "cookies": {
+                "N": "1.49"
+            },
+            "boost": {
+                "N": "1"
+            },
+            "chocCake": {
+                "N": "3.99"
+            },
+            "burritoMeat": {
+                "N": "14.99"
+            },
+            "creamChz": {
+                "N": "1.29"
+            },
+            "citrus": {
+                "N": "10.99"
+            },
+            "id": {
+                "S": "98fe7ee7-b901-4e15-853a-b4aaea7b700f"
+            },
+            "beetIt": {
+                "N": "10.99"
+            },
+            "__typename": {
+                "S": "RightMenu"
+            },
+            "smoothie": {
+                "N": "9.99"
+            },
+            "mono": {
+                "N": "9.99"
+            },
+            "carrot": {
+                "N": "10.99"
+            },
+            "quiche": {
+                "N": "10.99"
+            },
+            "crumblePie": {
+                "N": "4.99"
+            },
+            "createdAt": {
+                "S": "2026-09-11T16:29:24.758Z"
+            },
+            "burritoVeggie": {
+                "N": "12.69"
+            },
+            "carrotCake": {
+                "N": "5.99"
+            },
+            "pureGreens": {
+                "N": "10.99"
+            },
+            "french": {
+                "N": "14.29"
+            },
+            "updatedAt": {
+                "S": "2026-09-11T16:29:24.758Z"
+            },
+            "bagby": {
+                "N": "7.99"
+            },
+            "juice": {
+                "N": "10.99"
+            }
+        },
+        {
+            "carrotKale": {
+                "N": "10.99"
+            },
+            "bagel": {
+                "N": "1.99"
+            },
+            "muffin": {
+                "N": "3.99"
+            },
+            "brownies": {
+                "N": "3.99"
+            },
+            "cookies": {
+                "N": "1.49"
+            },
+            "boost": {
+                "N": "1"
+            },
+            "chocCake": {
+                "N": "3.99"
+            },
+            "burritoMeat": {
+                "N": "14.99"
+            },
+            "creamChz": {
+                "N": "1.29"
+            },
+            "citrus": {
+                "N": "10.99"
+            },
+            "id": {
+                "S": "e2aa3624-ebef-4348-8c67-ad09017983ec"
+            },
+            "beetIt": {
+                "N": "10.99"
+            },
+            "__typename": {
+                "S": "RightMenu"
+            },
+            "smoothie": {
+                "N": "9.99"
+            },
+            "mono": {
+                "N": "9.99"
+            },
+            "carrot": {
+                "N": "10.99"
+            },
+            "quiche": {
+                "N": "10.99"
+            },
+            "crumblePie": {
+                "N": "4.99"
+            },
+            "createdAt": {
+                "S": "2026-09-11T16:27:34.804Z"
+            },
+            "burritoVeggie": {
+                "N": "12.69"
+            },
+            "carrotCake": {
+                "N": "5.99"
+            },
+            "pureGreens": {
+                "N": "10.99"
+            },
+            "french": {
+                "N": "14.29"
+            },
+            "updatedAt": {
+                "S": "2026-09-11T16:27:34.804Z"
+            },
+            "bagby": {
+                "N": "7.99"
+            },
+            "juice": {
+                "N": "10.99"
+            }
+        }
+    ],
+    "Count": 2,
+    "ScannedCount": 2,
+    "ConsumedCapacity": null
+}
