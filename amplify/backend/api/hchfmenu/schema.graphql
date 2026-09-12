@@ -6,11 +6,17 @@ input AMPLIFY {
 type LeftMenu @model {
   id: ID!
   hites: Float!
+  moonlitGrove: Float
   hitesSm: Float!
+  moonlitGroveSm: Float
   creek: Float!
+  silverCurrent: Float
   creekSm: Float!
+  silverCurrentSm: Float
   pilot: Float!
+  starwatchPeak: Float
   pilotSm: Float!
+  starwatchPeakSm: Float
   chinese: Float!
   chineseSm: Float!
   southwest: Float!
@@ -39,28 +45,51 @@ type CenterMenu @model {
   id: ID!
   halfSandwich: Float!
   ponderosa: Float!
+  orchardKeeper: Float
   midpines: Float!
+  emberGrove: Float
   midpinesSm: Float!
+  emberGroveSm: Float
   captain: Float!
+  greenKnight: Float
   captainSm: Float!
+  greenKnightSm: Float
   bootjack: Float!
+  wayfarer: Float
   bootjackSm: Float!
+  wayfarerSm: Float
   fishcamp: Float!
+  mariner: Float
   fishcampSm: Float!
+  marinerSm: Float
   catheys: Float!
+  centurion: Float
   laurel: Float!
+  winterCourt: Float
   usona: Float!
+  oracle: Float
   grizzly: Float!
+  warlock: Float
   grizzlySm: Float!
+  warlockSm: Float
   riven: Float!
+  alchemist: Float
   rivenSm: Float!
+  alchemistSm: Float
   hornitos: Float!
+  gunslinger: Float
   totokon: Float!
+  artificer: Float
   portal: Float!
+  wanderer: Float
   meadows: Float!
+  faeryBargain: Float
   meadowsSm: Float!
+  faeryBargainSm: Float
   market: Float!
+  greenWitch: Float
   mariposan: Float!
+  spellbinder: Float
   blt: Float!
   bltSm: Float!
   sourcream: Float!
@@ -78,8 +107,11 @@ type CenterMenu @model {
 type RightMenu @model {
   id: ID!
   mono: Float!
+  soloist: Float
   bagby: Float!
+  dawnkeeper: Float
   french: Float!
+  sunforged: Float
   quiche: Float!
   burritoMeat: Float!
   burritoVeggie: Float!
@@ -93,10 +125,15 @@ type RightMenu @model {
   cookies: Float!
   juice: Float!
   beetIt: Float!
+  crimsonCurrent: Float
   carrotKale: Float!
+  greenCircuit: Float
   carrot: Float!
+  orangeSpell: Float
   citrus: Float!
+  sunward: Float
   pureGreens: Float!
+  verdantHex: Float
   smoothie: Float!
   boost: Float!
 }
