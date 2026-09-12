@@ -1,6 +1,6 @@
 {
-  "name": "High Country Cafe Menu System",
-  "description": "Menu & Kiosk PWA System",
+  "name": "seawich-digital-menu-system",
+  "description": "Raspberry Pi digital menu and remote price-management system built with Angular, Ionic, AWS AppSync, DynamoDB, and Cognito.",
   "version": "0.2.0",
   "author": "Matthew Coatney",
   "contributors": [
